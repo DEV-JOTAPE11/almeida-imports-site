@@ -1,0 +1,409 @@
+/* ════════════════════════════════════════════════════════
+   SECTION — A LOJA
+   ════════════════════════════════════════════════════════ */
+.section-almeida-brand {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: clamp(72px, 12vw, 120px);
+  padding-bottom: clamp(88px, 14vw, 140px);
+  padding-left: var(--section-edge);
+  padding-right: var(--section-edge);
+  background: linear-gradient(
+    165deg,
+    #060a13 0%,
+    #0a1122 38%,
+    #08101f 72%,
+    #05070e 100%
+  );
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.section-almeida-brand__glow {
+  pointer-events: none;
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 70%;
+  background: radial-gradient(
+    ellipse 80% 60% at 70% 20%,
+    rgba(30, 123, 255, 0.22) 0%,
+    rgba(79, 214, 255, 0.08) 40%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+/* ── Orbes desfocados de fundo ── */
+.almeida-brand-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.55;
+  z-index: 0;
+  will-change: transform;
+}
+.almeida-brand-orb--1 {
+  width: min(420px, 55vw);
+  height: min(420px, 55vw);
+  top: 8%;
+  right: -8%;
+  background: radial-gradient(
+    circle,
+    rgba(30, 123, 255, 0.42) 0%,
+    rgba(79, 214, 255, 0.14) 55%,
+    transparent 70%
+  );
+  animation: almeida-orb-drift 14s ease-in-out infinite;
+}
+.almeida-brand-orb--2 {
+  width: min(280px, 40vw);
+  height: min(280px, 40vw);
+  bottom: 12%;
+  left: -5%;
+  background: radial-gradient(
+    circle,
+    rgba(79, 214, 255, 0.3) 0%,
+    rgba(30, 123, 255, 0.12) 50%,
+    transparent 68%
+  );
+  animation: almeida-orb-drift 18s ease-in-out infinite reverse;
+  animation-delay: -4s;
+}
+.almeida-brand-orb--3 {
+  width: min(200px, 28vw);
+  height: min(200px, 28vw);
+  top: 42%;
+  left: 35%;
+  background: radial-gradient(
+    circle,
+    rgba(108, 178, 255, 0.24) 0%,
+    transparent 65%
+  );
+  animation: almeida-orb-drift 12s ease-in-out infinite;
+  animation-delay: -2s;
+  opacity: 0.35;
+}
+
+@keyframes almeida-orb-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-18px, 22px) scale(1.06);
+  }
+}
+
+.section-almeida-brand__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 1.05fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+  max-width: var(--layout-max);
+  margin: 0 auto;
+}
+
+.almeida-brand-copy {
+  max-width: 720px;
+}
+.almeida-brand-copy .section-eyebrow {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+#sf-almeida-brand {
+  margin-bottom: 28px;
+  max-width: 100%;
+  width: 100%;
+}
+#sf-almeida-brand .scroll-float-char {
+  font-size: clamp(36px, 4.5vw, 65px);
+  line-height: 0.98;
+  color: var(--ink);
+}
+#sf-almeida-brand .scroll-float-char.space {
+  width: 0.28em;
+}
+
+.almeida-brand-lead {
+  font-size: clamp(15px, 1.35vw, 17px);
+  line-height: 1.7;
+  color: var(--ink-muted);
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+.almeida-brand-lead strong {
+  color: var(--brand-bright);
+  font-weight: 700;
+}
+
+.almeida-brand-reveal-item {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+/* ── Pilares empilhados: viram um baralho que se abre no scroll ── */
+.almeida-brand-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+.almeida-brand-pillars--stack {
+  gap: 0;
+}
+.almeida-brand-pillars--stack .almeida-brand-pillar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  opacity: 1;
+  will-change: transform;
+}
+
+.almeida-brand-pillar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px 20px;
+  align-items: start;
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+}
+.almeida-brand-pillar__icon {
+  grid-row: 1 / span 2;
+  align-self: start;
+  margin-top: 2px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--brand-bright) 0%, var(--brand-deep) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px var(--brand-glow);
+}
+.almeida-brand-pillar__icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.almeida-brand-pillar__title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.almeida-brand-pillar__text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0;
+}
+
+.almeida-brand-cta {
+  margin-top: 36px;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* ── Visual: anéis, brilho, logo flutuante e produto ── */
+.almeida-brand-visual {
+  position: relative;
+  min-height: min(520px, 72vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.almeida-brand-visual__rings {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.almeida-brand-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(108, 178, 255, 0.16);
+  animation: almeida-ring-pulse 6s ease-in-out infinite;
+}
+.almeida-brand-ring--1 {
+  width: min(92%, 440px);
+  aspect-ratio: 1;
+  animation-delay: 0s;
+}
+.almeida-brand-ring--2 {
+  width: min(78%, 380px);
+  aspect-ratio: 1;
+  border-color: rgba(108, 178, 255, 0.12);
+  animation-delay: -2s;
+}
+.almeida-brand-ring--3 {
+  width: min(64%, 320px);
+  aspect-ratio: 1;
+  border-color: rgba(79, 214, 255, 0.14);
+  animation-delay: -4s;
+}
+
+@keyframes almeida-ring-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
+
+.almeida-brand-product-wrap {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 380px);
+  animation: almeida-product-float 7s ease-in-out infinite;
+}
+
+@keyframes almeida-product-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1deg);
+  }
+}
+
+.almeida-brand-product-wrap img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 30px 54px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 6px 34px var(--brand-glow));
+}
+
+/* Handoff Showcase para a marca: o slot real fica invisível até a animação pousar */
+html[data-showcase-brand-handoff="1"] #almeida-brand-product-img {
+  opacity: 0;
+}
+
+.showcase-to-brand-fly-img {
+  position: fixed;
+  z-index: 9450;
+  pointer-events: none;
+  object-fit: contain;
+  width: 1px;
+  height: 1px;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  filter: drop-shadow(0 30px 54px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 6px 34px var(--brand-glow));
+  will-change: width, height, left, top, opacity;
+}
+
+.almeida-brand-logo-float {
+  position: absolute;
+  top: 8%;
+  right: 6%;
+  z-index: 3;
+  width: clamp(120px, 22vw, 180px);
+  animation: almeida-logo-nudge 5s ease-in-out infinite;
+}
+.almeida-brand-logo-float .almeida-logo {
+  --logo-size: clamp(40px, 6vw, 56px);
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes almeida-logo-nudge {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+.almeida-brand-shine {
+  position: absolute;
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(280px, 70%);
+  height: 100px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(108, 178, 255, 0.5),
+    transparent
+  );
+  filter: blur(20px);
+  opacity: 0.5;
+  z-index: 1;
+  pointer-events: none;
+  animation: almeida-shine-sweep 4s ease-in-out infinite;
+}
+
+@keyframes almeida-shine-sweep {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateX(-50%) scaleX(0.8);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translateX(-50%) scaleX(1.05);
+  }
+}
+
+@media (max-width: 960px) {
+  .section-almeida-brand__inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .almeida-brand-visual {
+    min-height: 380px;
+    order: -1;
+  }
+  .almeida-brand-logo-float {
+    top: 4%;
+    right: 4%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .almeida-brand-orb,
+  .almeida-brand-ring,
+  .almeida-brand-product-wrap,
+  .almeida-brand-logo-float,
+  .almeida-brand-shine {
+    animation: none !important;
+  }
+  .almeida-brand-pillars--stack .almeida-brand-pillar {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    width: auto !important;
+    will-change: auto !important;
+  }
+}

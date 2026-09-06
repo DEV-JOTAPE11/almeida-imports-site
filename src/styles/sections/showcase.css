@@ -1,0 +1,331 @@
+/* ════════════════════════════════════════════════════════
+   SECTION — VITRINE (aparelho em destaque)
+   Fundo escuro tingido pela cor do aparelho, como nas artes da loja.
+   ════════════════════════════════════════════════════════ */
+.section-showcase {
+  --showcase-bg: #04101f;
+  --showcase-accent: #4b9cff;
+  --showcase-word: #16457d;
+  --showcase-center-width: min(86%, 540px);
+  --showcase-center-img-scale: 1;
+  --showcase-orbit-img-inner-width: 100%;
+  --showcase-orbit-1-width: clamp(96px, 15vw, 168px);
+  --showcase-orbit-2-width: clamp(64px, 9vw, 104px);
+  --showcase-orbit-3-width: clamp(88px, 14vw, 156px);
+  --showcase-orbit-4-width: clamp(56px, 8vw, 92px);
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 132px;
+  padding-bottom: 120px;
+  padding-left: var(--section-edge);
+  padding-right: var(--section-edge);
+  background: var(--showcase-bg);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.5s ease;
+}
+
+/* Halo atrás do aparelho — o mesmo brilho das artes do Instagram. */
+.section-showcase::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: min(1100px, 130vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--showcase-accent) 26%, transparent) 0%,
+    color-mix(in srgb, var(--showcase-accent) 8%, transparent) 38%,
+    transparent 66%
+  );
+  z-index: 0;
+  pointer-events: none;
+  transition: background 0.6s ease;
+}
+
+/* Cortina que varre a nova cor de fundo na troca de aparelho */
+.showcase-bg-color-wipe {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.section-showcase .showcase-bg-word {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(76px, 26vw, min(330px, 38vh));
+  letter-spacing: -0.045em;
+  line-height: 0.82;
+  color: var(--showcase-word);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    opacity 0.35s ease,
+    color 0.5s ease;
+}
+
+.section-showcase .showcase-bg-word .showcase-bg-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.section-showcase .showcase-bg-word .showcase-bg-space {
+  display: inline-block;
+  width: 0.24em;
+}
+
+/* Palavras mais longas pedem um corpo menor para caber na linha. */
+.section-showcase[data-showcase-product="iphone-17-pro-max"] .showcase-bg-word {
+  font-size: clamp(58px, 21vw, min(272px, 34vh));
+}
+.section-showcase[data-showcase-product="redmi-note-14-pro"] .showcase-bg-word {
+  font-size: clamp(62px, 22vw, min(288px, 35vh));
+}
+
+/* ── Rodapé flutuante: legenda, CTA e dica ── */
+.showcase-hero-cta-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(48px, calc(env(safe-area-inset-bottom, 0px) + 20px));
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  pointer-events: none;
+}
+.showcase-hero-cta-wrap .showcase-hero-cta,
+.showcase-hero-cta-wrap .magnet {
+  pointer-events: auto;
+}
+
+.showcase-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  text-align: center;
+}
+.showcase-caption__label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(17px, 2vw, 24px);
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+.showcase-caption__note {
+  font-family: var(--font-display);
+  font-size: clamp(10px, 1.1vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--showcase-accent);
+  transition: color 0.5s ease;
+}
+
+.showcase-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 42px;
+  border-radius: 999px;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  background: #ffffff;
+  color: #08111f;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(14px, 1.45vw, 17px);
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--showcase-accent) 55%, transparent),
+    0 16px 46px rgba(0, 0, 0, 0.45);
+  transition:
+    box-shadow 0.35s ease,
+    transform 0.2s ease;
+}
+.showcase-hero-cta:hover {
+  box-shadow:
+    0 0 0 3px var(--showcase-accent),
+    0 20px 56px rgba(0, 0, 0, 0.5);
+  transform: scale(0.98);
+}
+
+.showcase-hint {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.34);
+}
+
+/* ── Palco: aparelho central + acessórios em órbita ── */
+.showcase-stage {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+  min-height: min(78vw, 620px);
+  aspect-ratio: 16 / 11;
+}
+
+.showcase-orbit {
+  position: absolute;
+  z-index: 2;
+  width: clamp(72px, 13vw, 140px);
+  pointer-events: none;
+  will-change: transform;
+}
+.showcase-orbit img {
+  width: var(--showcase-orbit-img-inner-width, 100%);
+  height: auto;
+  margin-inline: auto;
+  display: block;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55));
+}
+
+.showcase-orbit--1 {
+  right: 92%;
+  top: 18%;
+  width: var(--showcase-orbit-1-width, clamp(96px, 15vw, 168px));
+  --showcase-rot: -18deg;
+  filter: blur(1.5px);
+}
+.showcase-orbit--1 img {
+  animation: showcaseOrbitFloat 4.2s ease-in-out infinite;
+}
+.showcase-orbit--2 {
+  left: 96%;
+  top: 34%;
+  width: var(--showcase-orbit-2-width, clamp(64px, 9vw, 104px));
+  --showcase-rot: 22deg;
+  filter: blur(1.5px);
+}
+.showcase-orbit--2 img {
+  animation: showcaseOrbitFloat 3.6s ease-in-out infinite 0.4s;
+}
+.showcase-orbit--3 {
+  right: 66%;
+  top: -12%;
+  width: var(--showcase-orbit-3-width, clamp(88px, 14vw, 156px));
+  --showcase-rot: 14deg;
+}
+.showcase-orbit--3 img {
+  animation: showcaseOrbitFloat 4.8s ease-in-out infinite 0.2s;
+}
+.showcase-orbit--4 {
+  right: 4%;
+  top: 2%;
+  width: var(--showcase-orbit-4-width, clamp(56px, 8vw, 92px));
+  --showcase-rot: -26deg;
+}
+.showcase-orbit--4 img {
+  animation: showcaseOrbitFloat 3.4s ease-in-out infinite 0.6s;
+}
+
+@keyframes showcaseOrbitFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--showcase-rot, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(var(--showcase-rot, 0deg));
+  }
+}
+
+.showcase-product-main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: var(--showcase-center-width, min(86%, 540px));
+}
+.showcase-product-parallax {
+  will-change: transform;
+  line-height: 0;
+}
+.showcase-product-flip {
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+}
+.showcase-product-flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+/* Escala do centro: SHOWCASE_PRODUCTS[].sizes.centerImgScale
+   → --showcase-center-img-scale */
+.showcase-product-main-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: scale(var(--showcase-center-img-scale, 1));
+  transform-origin: 50% 50%;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 34px 60px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 8px 40px var(--brand-glow));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-orbit--1 img,
+  .showcase-orbit--2 img,
+  .showcase-orbit--3 img,
+  .showcase-orbit--4 img {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-showcase {
+    padding-top: 72px;
+    padding-bottom: 88px;
+  }
+  .section-showcase .showcase-bg-word {
+    font-size: clamp(62px, 42vw, 260px);
+  }
+  .section-showcase[data-showcase-product="iphone-17-pro-max"] .showcase-bg-word {
+    font-size: clamp(44px, 30vw, 190px);
+  }
+  .section-showcase[data-showcase-product="redmi-note-14-pro"] .showcase-bg-word {
+    font-size: clamp(50px, 34vw, 215px);
+  }
+  .showcase-stage {
+    min-height: 420px;
+    aspect-ratio: unset;
+  }
+  .showcase-hint {
+    display: none;
+  }
+}
