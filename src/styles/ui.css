@@ -172,3 +172,174 @@
 .scroll-float-char.space {
   width: 0.3em;
 }
+
+/* ════════════════════════════════════════════════════════
+   CTA DE VIDRO (glassmorphism) — pílula escura com brilho girando
+   Usado na vitrine para levar da vitrine direto ao WhatsApp.
+   ════════════════════════════════════════════════════════ */
+.glass-cta {
+  /* Sobrescritos inline pelo componente. */
+  --glass-cta-spread: 90deg;
+  --glass-cta-shimmer: var(--accent-green-bright);
+  --glass-cta-speed: 4s;
+  /* Espessura do anel de brilho que sobra em volta do vidro. */
+  --glass-cta-cut: 1.5px;
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow:
+    0 8px 32px color-mix(in srgb, var(--accent-green-glow) 70%, transparent),
+    0 2px 10px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.glass-cta:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 46px 10px var(--accent-green-glow),
+    0 6px 18px rgba(0, 0, 0, 0.5);
+}
+.glass-cta:active {
+  transform: scale(0.99);
+}
+.glass-cta:focus-visible {
+  outline: 2px solid var(--accent-green-bright);
+  outline-offset: 3px;
+}
+
+/* Anel: um cone de luz maior que o botão, girando sem parar. */
+.glass-cta__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.glass-cta__ring::before {
+  content: "";
+  position: absolute;
+  inset: -200%;
+  background: conic-gradient(
+    from calc(270deg - (var(--glass-cta-spread) * 0.5)),
+    transparent 0,
+    var(--glass-cta-shimmer) var(--glass-cta-spread),
+    transparent var(--glass-cta-spread)
+  );
+  animation: glass-cta-rotate var(--glass-cta-speed) linear infinite;
+  will-change: transform;
+}
+
+/* Vidro: cobre o anel e deixa só a borda acesa. */
+.glass-cta__glass {
+  position: absolute;
+  inset: var(--glass-cta-cut);
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 34, 22, 0.9) 0%,
+    rgba(5, 14, 10, 0.94) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.glass-cta__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px 10px 10px;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+/* O aparelho vem de PNG escuro: o fundo claro do disco é o que faz
+   a silhueta aparecer dentro do vidro. */
+.glass-cta__thumb {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: radial-gradient(
+    circle at 50% 28%,
+    rgba(255, 255, 255, 0.22),
+    color-mix(in srgb, var(--accent-green) 16%, rgba(255, 255, 255, 0.06))
+  );
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent-green) 45%, transparent);
+}
+
+.glass-cta__label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(14px, 1.35vw, 16px);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.glass-cta__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-green) 26%, rgba(255, 255, 255, 0.06));
+  color: var(--white);
+  transition: background 0.3s ease;
+}
+.glass-cta__icon svg {
+  width: 17px;
+  height: 17px;
+}
+.glass-cta:hover .glass-cta__icon {
+  background: var(--accent-green);
+  color: #04140b;
+}
+
+@keyframes glass-cta-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sem movimento: o botão continua verde e legível, só para de girar. */
+@media (prefers-reduced-motion: reduce) {
+  .glass-cta__ring::before {
+    animation: none;
+  }
+  .glass-cta__ring::before {
+    background: var(--accent-green);
+  }
+  .glass-cta:hover {
+    transform: none;
+  }
+}
+
+/* Telas estreitas: a linha de apoio quebra em duas para não estourar. */
+@media (max-width: 420px) {
+  .glass-cta__content {
+    gap: 10px;
+    padding: 9px 14px 9px 9px;
+  }
+  .glass-cta__thumb {
+    width: 34px;
+    height: 34px;
+  }
+}

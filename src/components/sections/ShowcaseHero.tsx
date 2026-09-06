@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import { Magnet } from "@/components/effects/Magnet";
+import { GlassmorphismCta } from "@/components/ui/GlassmorphismCta";
 import { useShowcaseStage } from "@/components/providers/ShowcaseStageProvider";
 import { SHOWCASE_DEFAULT_PRODUCT_KEY, getShowcaseProductByKey } from "@/data/showcase-products";
 import {
@@ -246,16 +247,14 @@ export function ShowcaseHero() {
           </span>
         </p>
 
-        <Magnet
-          as="a"
-          className="showcase-hero-cta"
-          padding={72}
-          strength={3}
-          href="https://wa.me/5538998040470"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Falar no WhatsApp
+        <Magnet padding={72} strength={3}>
+          <GlassmorphismCta
+            href="https://wa.me/5538998040470"
+            target="_blank"
+            rel="noopener noreferrer"
+            label="Quero meu iPhone em até 24x"
+            aria-label="Falar no WhatsApp para comprar um iPhone — até 24x no boleto, sem cartão de crédito"
+          />
         </Magnet>
 
         <p className="showcase-hint" aria-hidden="true">

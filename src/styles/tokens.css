@@ -48,6 +48,13 @@
   --accent-cyan: #4fd6ff;
   --accent-orange: #ff8a3d;
 
+  /* Verde de conversão — o mesmo do WhatsApp, reservado para o CTA de venda.
+     Como o resto da vitrine é azul, ele é a única cor quente da tela. */
+  --accent-green: #25d366;
+  --accent-green-bright: #6bffab;
+  --accent-green-deep: #0b7a3b;
+  --accent-green-glow: rgba(37, 211, 102, 0.38);
+
   /* Scrollbar */
   --scrollbar-track: rgba(8, 12, 23, 0.92);
   --scrollbar-thumb: var(--brand);
