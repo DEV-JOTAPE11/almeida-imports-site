@@ -4,7 +4,7 @@ import { useEffect, type RefObject } from "react";
 
 import { gsap } from "@/lib/gsap";
 
-const GLOW = "227, 24, 55";
+const GLOW = "30, 123, 255";
 const SPOTLIGHT_RADIUS = 400;
 
 /** Raios de proximidade derivados do raio do holofote. */
@@ -53,7 +53,7 @@ export function useMagicBento(
     if (!grid || !section) return;
 
     const spotlight = document.createElement("div");
-    spotlight.className = "global-spotlight-team";
+    spotlight.className = "global-spotlight-catalog";
     spotlight.style.background = `radial-gradient(circle,
     rgba(${GLOW}, 0.15) 0%,
     rgba(${GLOW}, 0.08) 15%,

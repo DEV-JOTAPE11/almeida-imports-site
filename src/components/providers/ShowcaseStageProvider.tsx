@@ -7,7 +7,7 @@ import { createContext, useContext, useMemo, useRef, type ReactNode, type RefObj
  *
  * Duas animações cruzam a fronteira das seções e precisam enxergar os dois
  * lados ao mesmo tempo:
- *  - a troca de sabor, que espelha o produto ativo no slot da marca;
+ *  - a troca de aparelho, que espelha o produto ativo no slot da loja;
  *  - o handoff, em que o produto "voa" do hero até o slot da marca no scroll.
  *
  * Como GSAP trabalha direto no DOM, o estado dessas animações vive em refs
@@ -19,7 +19,7 @@ export interface ShowcaseStageRefs {
   showcaseSectionRef: RefObject<HTMLElement | null>;
   /** Imagem do produto central. */
   showcaseProductImgRef: RefObject<HTMLImageElement | null>;
-  /** Caixa 3D que gira no flip de sabor. */
+  /** Caixa 3D que gira no flip de troca de aparelho. */
   showcaseFlipInnerRef: RefObject<HTMLDivElement | null>;
   /** Palavra gigante de fundo. */
   showcaseBgWordRef: RefObject<HTMLParagraphElement | null>;

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="a" x1="16" y1="8" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9ecdff"/>
+      <stop offset=".55" stop-color="#1e7bff"/>
+      <stop offset="1" stop-color="#0b47c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="#05070e"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="13.5" fill="none" stroke="#1e7bff" stroke-opacity=".35"/>
+  <!-- Monograma "A" com o risco orbital do logo -->
+  <path d="M31.6 13h5.1l13.1 34h-7.2l-2.7-7.6H27.4L24.7 47h-7.1L31.6 13Zm2.5 9.7-4.6 12.9h9.2l-4.6-12.9Z" fill="url(#a)"/>
+  <path d="M14 34.4c9.8-8.4 24.4-14.6 36.6-15.1" fill="none" stroke="#6cb2ff" stroke-width="3.2" stroke-linecap="round"/>
+</svg>

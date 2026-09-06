@@ -1,32 +1,36 @@
 import type { BrandPillar } from "@/types";
 
-/** Os três pilares da marca, com os ícones de linha usados na seção. */
+/** Os três pilares da loja, com os ícones de linha usados na seção. */
 export const BRAND_PILLARS: BrandPillar[] = [
   {
-    id: "cuidado",
-    title: "Cuidado no dia a dia",
-    text: "Fórmulas e texturas que acompanham a rotina — pele e lábios protegidos com a confiança de quem está há décadas no mercado.",
+    id: "garantia",
+    title: "Original, lacrado e com garantia",
+    text: "Aparelho conferido na sua frente, nota fiscal e garantia de verdade. Você sai da loja com o celular configurado e com os dados do antigo já transferidos.",
     icon: (
       <>
-        <path d="M12 21s-7-4.5-7-11a7 7 0 1 1 14 0c0 6.5-7 11-7 11z" />
-        <circle cx="12" cy="10" r="2.5" />
+        <path d="M12 3l7.5 3v5.4c0 4.4-3 8.3-7.5 9.6-4.5-1.3-7.5-5.2-7.5-9.6V6z" />
+        <path d="M9 12.2l2.2 2.2L15.4 10" />
       </>
     ),
   },
   {
-    id: "excelencia",
-    title: "Excelência Cimed",
-    text: "Integrada a uma das maiores farmacêuticas do país, a Carmed carrega rigor, inovação e responsabilidade em cada lançamento.",
-    icon: <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z" />,
-  },
-  {
-    id: "brasil",
-    title: "Brasil em cada detalhe",
-    text: "Presença nacional, parcerias com farmácias e o tom acolhedor que só uma marca brasileira constrói com o consumidor.",
+    id: "boleto",
+    title: "Parcelamos no boleto em até 24x",
+    text: "Sem cartão de crédito e sem limite travado. A gente monta o parcelamento no boleto bancário e você leva o aparelho no mesmo dia.",
     icon: (
       <>
-        <circle cx="12" cy="12" r="10" />
-        <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
+        <rect x="2.5" y="5.5" width="19" height="13" rx="2.5" />
+        <path d="M2.5 10h19M6 14.5h4" />
+      </>
+    ),
+  },
+  {
+    id: "assistencia",
+    title: "Assistência técnica especializada",
+    text: "Troca de tela, bateria, conector e reparo de placa feitos aqui mesmo, em Buritis e Arinos. Orçamento antes, sem surpresa na retirada.",
+    icon: (
+      <>
+        <path d="M14.7 6.3a4 4 0 0 0-5.5 5.2L4 16.7 7.3 20l5.2-5.2a4 4 0 0 0 5.2-5.5l-2.6 2.6-2.2-.6-.6-2.2z" />
       </>
     ),
   },

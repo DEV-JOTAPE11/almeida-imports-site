@@ -2,14 +2,14 @@
 
 import { useEffect, useRef } from "react";
 
+import { AlmeidaLogo } from "@/components/brand/AlmeidaLogo";
 import { NAV_LINKS } from "@/data/nav";
 
 const SCROLL_THRESHOLD = 56;
 
 /**
- * Menu fixo do topo. Nasce transparente sobre o hero colorido (logo em
- * branco) e, passados alguns pixels de scroll, ganha fundo de vidro fosco
- * e devolve a cor original do logo.
+ * Menu fixo do topo. Nasce transparente sobre a vitrine e, passados alguns
+ * pixels de scroll, ganha fundo de vidro fosco escuro e a linha de apoio.
  */
 export function TopMenu() {
   const headerRef = useRef<HTMLElement>(null);
@@ -47,17 +47,11 @@ export function TopMenu() {
       <div className="top-menu__inner">
         <a
           className="top-menu__brand"
-          href="#section-carmed-fini"
+          href="#section-showcase"
           aria-label="Ir para o topo"
         >
-          <img
-            src="/assets/carmed.png"
-            alt="Carmed"
-            width={168}
-            height={46}
-            loading="eager"
-            decoding="async"
-          />
+          <AlmeidaLogo size={44} />
+          <span className="sr-only">Almeida Imports</span>
         </a>
         <nav className="top-menu__links" aria-label="Seções da página">
           {NAV_LINKS.map((link) => (

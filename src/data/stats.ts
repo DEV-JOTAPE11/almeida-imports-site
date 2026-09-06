@@ -1,37 +1,36 @@
 import type { Stat } from "@/types";
 
-/** Números do Grupo Cimed — contadores animados no scroll. */
+/** Números da Almeida Imports — contadores animados no scroll. */
 export const STATS: Stat[] = [
   {
-    id: "faturamento",
+    id: "parcelamento",
+    target: 24,
+    suffix: "x",
+    label: "No boleto bancário",
+    description:
+      "Parcelamento no boleto em até 24 vezes, sem precisar de cartão de crédito.",
+  },
+  {
+    id: "lojas",
     target: 2,
-    prefix: "R$",
-    suffix: "bi+",
-    label: "Faturamento",
+    label: "Lojas físicas",
     description:
-      "Faturamento anual do Grupo Cimed — entre as maiores farmacêuticas do país.",
-  },
-  {
-    id: "posicao",
-    target: 3,
-    suffix: "ª",
-    label: "Posição nacional",
-    description: "Maior farmacêutica de capital brasileiro e 3ª maior do Brasil.",
-  },
-  {
-    id: "anos",
-    target: 30,
-    suffix: "+",
-    label: "Anos de história",
-    description:
-      "Três décadas transformando uma empresa familiar em gigante nacional.",
+      "Buritis e Arinos, no noroeste de Minas — atendimento no balcão, não só online.",
   },
   {
     id: "marcas",
-    target: 50,
+    target: 4,
     suffix: "+",
-    label: "Marcas no portfólio",
+    label: "Marcas em destaque",
     description:
-      "De Lavitan a Carmed — produtos que estão na casa de todo brasileiro.",
+      "Apple, Xiaomi, JBL e Starlink, além da linha de acessórios que gira toda semana.",
+  },
+  {
+    id: "seguidores",
+    target: 7,
+    suffix: "mil+",
+    label: "Seguidores no Instagram",
+    description:
+      "A comunidade que acompanha lançamento, chegada de estoque e promoção pelos nossos perfis.",
   },
 ];

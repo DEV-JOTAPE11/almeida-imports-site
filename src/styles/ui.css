@@ -6,10 +6,12 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--carmed-red);
+  background: var(--brand);
+  box-shadow: 0 0 12px var(--brand-glow);
   flex-shrink: 0;
 }
 .eyebrow-text {
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -20,7 +22,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  font-family: var(--font-display);
   font-size: 10px;
+  font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--muted);
@@ -36,9 +40,13 @@
   will-change: transform;
 }
 
+/* Botão principal: pílula azul que preenche de branco no hover. */
 .btn-primary {
-  background: var(--white);
-  color: var(--black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand);
+  color: var(--white);
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 13px;
@@ -48,14 +56,18 @@
   border-radius: 100px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease;
+  box-shadow: 0 10px 34px var(--brand-glow);
+  transition:
+    transform 0.2s ease,
+    color 0.3s ease,
+    box-shadow 0.25s ease;
   white-space: nowrap;
 }
 .btn-primary::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--carmed-red);
+  background: var(--white);
   transform: translateX(-101%);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: inherit;
@@ -67,7 +79,8 @@
 }
 .btn-primary:hover {
   transform: scale(0.97);
-  color: var(--white);
+  color: var(--brand-deep);
+  box-shadow: 0 14px 42px var(--brand-glow);
 }
 .btn-primary:hover::after {
   transform: translateX(0);
@@ -84,7 +97,7 @@
   white-space: nowrap;
 }
 .btn-ghost:hover {
-  color: var(--carmed-red);
+  color: var(--brand-bright);
 }
 
 /* ── Cabeçalho de seção ── */

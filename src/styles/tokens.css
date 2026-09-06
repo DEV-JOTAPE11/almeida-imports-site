@@ -1,6 +1,7 @@
 /* ════════════════════════════════════════════════════════
    DESIGN SYSTEM — tokens
-   Paleta Carmed (vermelho) sobre superfícies claras e quentes.
+   Almeida Imports: azul elétrico sobre preto, o mesmo contraste
+   das artes do Instagram e do LED da loja.
    ════════════════════════════════════════════════════════ */
 :root {
   /* Layout */
@@ -12,32 +13,36 @@
     calc((100vw - var(--layout-max)) / 2 + var(--layout-gutter))
   );
 
-  /* Tipografia — `--font-poppins` vem de next/font (ver app/layout.tsx) */
-  --font-sans: var(--font-poppins), "Poppins", system-ui, sans-serif;
+  /* Tipografia — as variáveis vêm de next/font (ver app/layout.tsx).
+     Inter carrega o texto; Saira assina a marca e os rótulos técnicos. */
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-saira), "Saira", var(--font-sans);
 
   /* Marca */
-  --carmed-red: #e31837;
-  --carmed-red-deep: #b01028;
-  --carmed-red-glow: rgba(227, 24, 55, 0.35);
+  --brand: #1e7bff;
+  --brand-deep: #0b47c4;
+  --brand-bright: #6cb2ff;
+  --brand-glow: rgba(30, 123, 255, 0.42);
 
   /* Superfícies */
-  --surface: #fff8f7;
-  --surface-warm: #fff0ee;
-  --surface-card: #ffffff;
+  --surface: #05070e;
+  --surface-alt: #080c17;
+  --surface-card: #0c1220;
+  --hairline: rgba(120, 170, 255, 0.14);
 
   /* Texto */
-  --ink: #1a1214;
-  --ink-muted: rgba(26, 18, 20, 0.62);
+  --ink: #f2f6ff;
+  --ink-muted: rgba(222, 233, 255, 0.6);
   --muted: var(--ink-muted);
 
   /* Neutros e acentos auxiliares */
-  --black: #1a1214;
+  --black: #05070e;
   --white: #ffffff;
-  --lime: #ff8c42;
-  --pink: #ff4d6d;
+  --accent-cyan: #4fd6ff;
+  --accent-orange: #ff8a3d;
 
   /* Scrollbar */
-  --scrollbar-track: rgba(255, 240, 238, 0.92);
-  --scrollbar-thumb: var(--carmed-red);
-  --scrollbar-thumb-hover: var(--carmed-red-deep);
+  --scrollbar-track: rgba(8, 12, 23, 0.92);
+  --scrollbar-thumb: var(--brand);
+  --scrollbar-thumb-hover: var(--brand-bright);
 }

@@ -45,20 +45,23 @@ export function useShowcaseProductCycle(refs: ShowcaseStageRefs) {
     const bgWord = showcaseBgWordRef.current;
     const colorWipe = showcaseColorWipeRef.current;
 
+    /* `refreshInit` dispara syncBrandProduct, que ao fim pede outro refresh.
+       Sem esta trava os dois se realimentam e a página fica remedindo sozinha. */
+    let refreshingFromSync = false;
+
     /** Espelha o aparelho ativo no slot da seção da loja. */
     function syncBrandProduct() {
       const brandImg = brandProductImgRef.current;
       const showcaseImg = showcaseProductImgRef.current;
-      if (!brandImg || !showcaseImg) return;
-
-      /* Só remede quando a arte realmente mudou. Chamar refresh() aqui
-         incondicionalmente realimentava o próprio refreshInit que dispara
-         esta função — um laço que prendia a thread principal. */
-      if (brandImg.src === showcaseImg.src) return;
+      if (!brandImg || !showcaseImg || refreshingFromSync) return;
 
       brandImg.src = showcaseImg.src;
       brandImg.alt = showcaseImg.alt;
-      afterImageReady(brandImg, () => ScrollTrigger.refresh());
+      afterImageReady(brandImg, () => {
+        refreshingFromSync = true;
+        ScrollTrigger.refresh();
+        refreshingFromSync = false;
+      });
     }
 
     /* Pré-carrega todas as artes para que a troca não pisque. */

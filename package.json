@@ -1,8 +1,8 @@
 {
-  "name": "carmed-site",
+  "name": "almeida-imports-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Carmed by Solid Tech — site institucional em Next.js + TypeScript",
+  "description": "Almeida Imports — site institucional em Next.js + TypeScript",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

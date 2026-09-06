@@ -1,5 +1,5 @@
 /**
- * Tipos compartilhados do site Carmed.
+ * Tipos compartilhados do site da Almeida Imports.
  */
 
 /** Link de navegação (menu topo, colunas do rodapé). */
@@ -14,21 +14,23 @@ export interface FooterColumn {
   links: NavLink[];
 }
 
-/** Integrante do time exibido no grid Magic Bento. */
-export interface TeamMember {
+/** Card do catálogo exibido no grid Magic Bento. */
+export interface CatalogItem {
   id: string;
+  /** Linha/produto — vira o título do card. */
   name: string;
+  /** Categoria curta exibida acima do título. */
   role: string;
   bio: string;
   photo: string;
-  /** `object-position` custom da foto, quando o enquadramento pede. */
+  /** `object-position` custom da imagem, quando o enquadramento pede. */
   photoPosition?: string;
   social: {
     handle: string;
     href: string;
     ariaLabel: string;
   };
-  /** Cards de destaque ocupam mais área no grid (classe `card-ceo`). */
+  /** Cards de destaque ocupam mais área no grid (classe `card-featured`). */
   featured?: boolean;
 }
 
@@ -42,8 +44,8 @@ export interface Stat {
   description: string;
 }
 
-/** Dimensões CSS específicas de cada sabor Fini. */
-export interface FiniFlavorSizes {
+/** Dimensões CSS específicas de cada produto da vitrine. */
+export interface ShowcaseProductSizes {
   centerWidth: string;
   centerImgScale: number;
   orbitImgWidth: string;
@@ -51,22 +53,30 @@ export interface FiniFlavorSizes {
   orbitWidths: [string, string, string, string];
 }
 
-/** Sabor da vitrine Carmed × Fini. */
-export interface FiniFlavor {
+/** Aparelho em destaque na vitrine da home. */
+export interface ShowcaseProduct {
   key: string;
-  /** Cor de fundo da seção quando o sabor está ativo. */
+  /** Cor de fundo da seção quando o produto está ativo. */
   bg: string;
+  /** Cor de apoio: CTA, brilho do palco e detalhe do menu. */
+  accent: string;
+  /** Cor da palavra gigante ao fundo (fica atrás do aparelho). */
+  wordColor: string;
   /** Palavra gigante de fundo. */
   word: string;
-  /** Produto central. */
+  /** Nome comercial completo, usado na legenda sob o palco. */
+  label: string;
+  /** Linha curta de apoio à legenda (cor, capacidade, destaque). */
+  note: string;
+  /** Aparelho central. */
   center: string;
-  /** Imagem do doce que orbita o produto. */
+  /** Acessório que orbita o aparelho. */
   orbit: string;
   alt: string;
-  sizes: FiniFlavorSizes;
+  sizes: ShowcaseProductSizes;
 }
 
-/** Pilar da seção "A marca". */
+/** Pilar da seção "A loja". */
 export interface BrandPillar {
   id: string;
   title: string;

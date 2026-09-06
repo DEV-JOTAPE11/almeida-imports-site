@@ -1,8 +1,11 @@
-# Carmed by Solid Tech — Next.js + TypeScript
+# Almeida Imports — Next.js + TypeScript
 
-Port do site Carmed (originalmente um `index.html` único com CSS e JS embutidos)
-para **Next.js 16 (App Router) + TypeScript**, dividido em seções, com paridade
-visual e de animação com o original.
+Site institucional da **Almeida Imports**, loja de eletrônicos de Buritis e
+Arinos (MG), em **Next.js 16 (App Router) + TypeScript**.
+
+O código nasceu de um site anterior (marca Carmed) e manteve a mesma
+arquitetura de seções e animações — o que mudou foi a marca: design system,
+tipografia, copy e imagens.
 
 ## Rodando
 
@@ -15,43 +18,66 @@ npm run typecheck  # tsc --noEmit
 npm run lint       # eslint
 ```
 
+## A marca
+
+Referências: os perfis [@almeidaimportss_](https://www.instagram.com/almeidaimportss_/)
+e [@almeidaimports.arinos](https://www.instagram.com/almeidaimports.arinos/), e a
+ficha do Google Maps da loja de Buritis.
+
+| | |
+| --- | --- |
+| Assinatura | Tecnologia que conecta você |
+| Cor | Azul elétrico `#1E7BFF` sobre preto `#05070E` — o LED da fachada e o fundo das artes do Instagram |
+| Tipografia | **Inter** no texto e nos títulos; **Saira** na assinatura e nos rótulos técnicos (desenho quadrado, como o logo) |
+| Lojas | Buritis — Av. Central, 1120 · (38) 99804-0470<br>Arinos — R. Alcides Carneiro, 157, Centro · (38) 99959-7481 |
+| Linhas | iPhone, Xiaomi, JBL, Starlink, Apple Watch, acessórios |
+| Diferenciais | Aparelho original com garantia, parcelamento no boleto em até 24x, assistência técnica na própria loja |
+
+O lockup **ALMEIDA / IMPORTS** é um componente de texto
+(`components/brand/AlmeidaLogo.tsx`), não um bitmap: fica nítido em qualquer
+tamanho e acompanha as cores do tema. Se a loja tiver o arquivo vetorial
+original do logo, ele pode substituir o componente sem mexer no resto.
+
 ## Estrutura
 
 ```
 src/
 ├─ app/
-│  ├─ layout.tsx           fonte Poppins (next/font), metadata, favicon
+│  ├─ layout.tsx           fontes Inter e Saira (next/font), metadata, favicon
 │  ├─ page.tsx             composição da página, seção por seção
 │  └─ globals.css          importa o design system e as folhas de seção
 │
 ├─ styles/                 CSS dividido em camadas
 │  ├─ tokens.css           variáveis: paleta, superfícies, layout, tipografia
-│  ├─ reset.css            reset, base do body, grain, scroll-margin das âncoras
+│  ├─ reset.css            reset, base do body, scroll-margin das âncoras
 │  ├─ scrollbar.css        scrollbar customizada (Firefox + WebKit)
 │  ├─ cursor.css           cursor customizado e canvas de faíscas
+│  ├─ brand.css            lockup da marca e utilitário .sr-only
 │  ├─ ui.css               primitivos: eyebrow, magnet, botões, títulos animados
 │  └─ sections/            uma folha por seção da página
 │     ├─ top-menu.css
-│     ├─ carmed-fini.css
+│     ├─ showcase.css
 │     ├─ brand-bar.css
-│     ├─ carmed-brand.css
-│     ├─ team.css
+│     ├─ almeida-brand.css
+│     ├─ catalog.css
 │     ├─ numbers.css
-│     ├─ footer.css
-│     └─ fini-hero-legacy.css   (estilos do hero antigo, sem DOM correspondente)
+│     └─ footer.css
 │
 ├─ components/
+│  ├─ brand/               AlmeidaLogo
 │  ├─ layout/              TopMenu, SiteFooter
-│  ├─ sections/            CarmedFiniHero, CarmedBrandBar, CarmedBrand,
-│  │                       Team, TeamCard, Numbers, StatCounter
+│  ├─ sections/            ShowcaseHero, AlmeidaBrandBar, AlmeidaBrand,
+│  │                       Catalog, CatalogCard, Numbers, StatCounter
 │  ├─ effects/             CustomCursor, ClickSpark, Magnet, ScrollFloat,
-│  │                       ScrollReveal, FiniStageController
-│  ├─ providers/           FiniStageProvider (refs partilhadas entre seções)
-│  └─ icons/               InstagramIcon
+│  │                       ScrollReveal, ShowcaseStageController
+│  ├─ providers/           ShowcaseStageProvider (refs partilhadas entre seções)
+│  └─ icons/               InstagramIcon, WhatsAppIcon
 │
-├─ hooks/                  useMagicBento, useFiniFlavorCycle, useFiniBrandHandoff
-├─ lib/                    gsap (registro do ScrollTrigger), motion, fini
-├─ data/                   nav, team, stats, footer, fini-flavors, brand-pillars
+├─ hooks/                  useMagicBento, useShowcaseProductCycle,
+│                          useShowcaseBrandHandoff
+├─ lib/                    gsap (registro do ScrollTrigger), motion, showcase
+├─ data/                   nav, catalog, stats, footer, showcase-products,
+│                          brand-pillars
 └─ types/                  tipos compartilhados
 ```
 
@@ -62,12 +88,12 @@ Os assets ficam em `public/assets/` e são referenciados por caminho absoluto
 
 | Seção | Componente | O que acontece |
 | --- | --- | --- |
-| Vitrine Fini | `CarmedFiniHero` | Palavra gigante do sabor, produto central, 4 doces em órbita, CTA magnético. Entrada coreografada; clique em qualquer lugar troca o sabor. |
-| Faixa da marca | `CarmedBrandBar` | Logo + assinatura ligando Carmed ao Grupo Cimed. |
-| A marca | `CarmedBrand` | Título letra a letra, três pilares empilhados que se abrem no scroll, orbes e produto com parallax. |
-| O time | `Team` | Grid Magic Bento com holofote, borda que acende por proximidade, tilt 3D e onda ao clicar. |
-| Em números | `Numbers` | Quatro contadores que animam ao entrar na tela, sobre a foto da fábrica. |
-| Rodapé | `SiteFooter` | Assinatura, colunas de navegação e linha legal. |
+| Vitrine | `ShowcaseHero` | Palavra gigante do aparelho, celular no centro, 4 acessórios em órbita, legenda com modelo e cor, CTA magnético para o WhatsApp. Entrada coreografada; clique em qualquer lugar troca o aparelho. |
+| Faixa da marca | `AlmeidaBrandBar` | Lockup + assinatura ligando as duas unidades. |
+| A loja | `AlmeidaBrand` | Título letra a letra, três pilares empilhados que se abrem no scroll, orbes e aparelho com parallax. |
+| Catálogo | `Catalog` | Grid Magic Bento com holofote, borda que acende por proximidade, tilt 3D e onda ao clicar. Cada card leva ao WhatsApp da loja. |
+| Em números | `Numbers` | Quatro contadores que animam ao entrar na tela, sobre a malha técnica com brilho azul. |
+| Rodapé | `SiteFooter` | Assinatura, catálogo, endereços das duas lojas, redes e linha legal. |
 
 ## Decisões de implementação
 
@@ -77,11 +103,21 @@ estado React introduziria um re-render assíncrono no meio da animação. Os
 componentes renderizam o estado inicial (bom para SSR) e o GSAP assume dali em
 diante — o padrão usual de integração GSAP + React.
 
-**`FiniStageProvider`.** Duas animações atravessam a fronteira das seções: a
-troca de sabor (que espelha o produto ativo no slot da seção da marca) e o
-handoff, em que o produto voa do hero até esse slot conforme a página rola. O
-provider expõe as refs dos dois lados; o `FiniStageController`, montado ao fim
-da página, instala os dois efeitos.
+**`ShowcaseStageProvider`.** Duas animações atravessam a fronteira das seções: a
+troca de aparelho (que espelha o produto ativo no slot da seção da loja) e o
+handoff, em que o celular voa do hero até esse slot conforme a página rola. O
+provider expõe as refs dos dois lados; o `ShowcaseStageController`, montado ao
+fim da página, instala os dois efeitos.
+
+**Cores do aparelho como custom properties.** Cada item de
+`data/showcase-products.ts` traz `bg`, `accent` e `wordColor`;
+`applyShowcaseProductSizes` escreve tudo em `--showcase-*` na seção. O CSS só
+consome as variáveis, então acrescentar um aparelho novo é editar o array —
+igual às artes do Instagram, que trocam o fundo junto com a cor do celular.
+
+**Trava de reentrância no `syncBrandProduct`.** O `refreshInit` do ScrollTrigger
+dispara a função, que ao fim pedia outro `ScrollTrigger.refresh()` — os dois se
+realimentavam e a página ficava remedindo sozinha. Uma flag corta o ciclo.
 
 **`<img>` nativas.** As animações dependem de medir e trocar imagens
 imperativamente, o que o wrapper do `next/image` atrapalharia. A regra
@@ -91,20 +127,20 @@ imperativamente, o que o wrapper do `next/image` atrapalharia. A regra
 Next) gera os prefixos; declarar os dois manualmente fazia ele descartar a
 propriedade padrão e o menu perdia o vidro fosco ao rolar.
 
-**Tipografia via `next/font`.** Poppins é servida self-hosted e exposta como
-`--font-poppins`; o design system usa `--font-sans` em cima dela.
+## Imagens
 
-## Paridade com o original
+Os aparelhos são PNGs com fundo transparente, todos no mesmo enquadramento
+(frente e verso lado a lado), normalizados para uma tela quadrada:
 
-Verificado em Chrome headless a 1440×900 e 390×844, comparando com o
-`index.html` original servido em paralelo:
+| Arquivo | Conteúdo | Origem |
+| --- | --- | --- |
+| `p-iphone-deep-blue.png` | iPhone 17 Pro Deep Blue | `ip17.png`, a referência de estilo |
+| `p-iphone-cosmic-orange.png` | iPhone 17 Pro Max Cosmic Orange | render de imprensa |
+| `p-redmi-note-14.png` | Redmi Note 14 Pro | render de imprensa |
+| `p-iphone-duo.png`, `p-apple-watch.png`, `p-airpods-pro.png` | linha Apple | CDN da Apple |
+| `p-jbl-boombox.png` | JBL Boombox 3 | site oficial da JBL |
+| `p-starlink.png` | Kit Starlink Standard | site oficial da Starlink |
 
-- altura total da página idêntica (4722 px desktop, 7080 px mobile);
-- altura de cada seção idêntica ao subpixel;
-- ciclo dos três sabores idêntico (cor, palavra, produto, doce, custom
-  properties de tamanho e espelhamento no slot da marca);
-- contadores, grid do time, rodapé e handoff do produto conferidos posição a
-  posição;
-- diferença de pixels ≤ 0,33% nas capturas, restrita a anti-aliasing de texto e
-  à fase das animações CSS infinitas no instante da captura;
-- nenhum erro de console em dev ou produção.
+São imagens de divulgação dos fabricantes. Antes de publicar, vale trocá-las por
+fotos dos aparelhos da própria loja — além de evitar qualquer dúvida de uso, é o
+que os perfis da Almeida já fazem.

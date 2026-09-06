@@ -5,7 +5,7 @@ import type { ShowcaseProduct, ShowcaseProductSizes } from "@/types";
  * não sobrescreve alguma medida.
  */
 export const SHOWCASE_BASE_SIZES: ShowcaseProductSizes = {
-  centerWidth: "min(86%, 540px)",
+  centerWidth: "min(86%, 540px, 46vh)",
   centerImgScale: 1,
   orbitImgWidth: "100%",
   orbitWidths: [
@@ -50,7 +50,7 @@ export const SHOWCASE_PRODUCTS: ShowcaseProduct[] = [
     alt: "iPhone 17 Pro Max Cosmic Orange, frente e verso",
     sizes: {
       ...SHOWCASE_BASE_SIZES,
-      centerWidth: "min(86%, 520px)",
+      centerWidth: "min(86%, 520px, 45vh)",
       orbitWidths: [
         "clamp(84px, 12vw, 138px)",
         "clamp(60px, 8vw, 94px)",
@@ -72,7 +72,7 @@ export const SHOWCASE_PRODUCTS: ShowcaseProduct[] = [
     alt: "Xiaomi Redmi Note 14 Pro, frente e verso",
     sizes: {
       ...SHOWCASE_BASE_SIZES,
-      centerWidth: "min(84%, 500px)",
+      centerWidth: "min(84%, 500px, 44vh)",
       orbitWidths: [
         "clamp(92px, 14vw, 152px)",
         "clamp(62px, 9vw, 100px)",

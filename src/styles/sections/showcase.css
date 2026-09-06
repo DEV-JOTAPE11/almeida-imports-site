@@ -6,7 +6,7 @@
   --showcase-bg: #04101f;
   --showcase-accent: #4b9cff;
   --showcase-word: #16457d;
-  --showcase-center-width: min(86%, 540px);
+  --showcase-center-width: min(86%, 540px, 46vh);
   --showcase-center-img-scale: 1;
   --showcase-orbit-img-inner-width: 100%;
   --showcase-orbit-1-width: clamp(96px, 15vw, 168px);
@@ -268,7 +268,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 4;
-  width: var(--showcase-center-width, min(86%, 540px));
+  width: var(--showcase-center-width, min(86%, 540px, 46vh));
 }
 .showcase-product-parallax {
   will-change: transform;

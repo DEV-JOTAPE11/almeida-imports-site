@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const SPARK_COLOR = "#E31837";
+const SPARK_COLOR = "#6CB2FF";
 const SPARK_COUNT = 8;
 const SPARK_RADIUS = 22;
 const SPARK_SIZE = 9;

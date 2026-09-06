@@ -8,7 +8,7 @@ import { STATS } from "@/data/stats";
 import { gsap } from "@/lib/gsap";
 
 /**
- * Seção "Em números" — a escala do Grupo Cimed sobre a foto da fábrica.
+ * Seção "Em números" — o tamanho da operação sobre o fundo com brilho azul.
  * Os quatro blocos entram em cascata e cada contador anima ao aparecer.
  */
 export function Numbers() {
@@ -39,7 +39,7 @@ export function Numbers() {
       </p>
 
       <div className="numbers-title-wrap">
-        <ScrollFloat id="sf-numbers" text="Números que impressionam." />
+        <ScrollFloat id="sf-numbers" text="A loja em números." />
       </div>
 
       <div className="numbers-grid" ref={gridRef}>

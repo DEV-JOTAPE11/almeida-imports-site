@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════
-   TOP MENU — transparente sobre o hero, vidro fosco ao rolar
+   TOP MENU — transparente sobre a vitrine, vidro fosco ao rolar
    ════════════════════════════════════════════════════════ */
 .top-menu {
   position: fixed;
@@ -21,16 +21,16 @@
     box-shadow 0.4s ease;
 }
 .top-menu.is-scrolled {
-  background: rgba(255, 248, 247, 0.78);
+  background: rgba(6, 9, 18, 0.72);
   backdrop-filter: blur(16px);
-  border-bottom-color: rgba(227, 24, 55, 0.14);
-  box-shadow: 0 10px 36px rgba(227, 24, 55, 0.07);
+  border-bottom-color: var(--hairline);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 .top-menu.is-scrolled .top-menu__links a {
-  color: var(--carmed-red);
+  color: var(--ink-muted);
 }
 .top-menu.is-scrolled .top-menu__links a:hover {
-  color: var(--carmed-red-deep);
+  color: var(--brand-bright);
 }
 .top-menu__inner {
   width: 100%;
@@ -47,16 +47,14 @@
 .top-menu__brand {
   display: inline-flex;
   align-items: center;
+  position: relative;
 }
-.top-menu__brand img {
-  height: clamp(42px, 5.5vw, 56px);
-  width: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  transition: filter 0.4s ease;
+.top-menu__brand .almeida-logo {
+  --logo-size: clamp(38px, 4.4vw, 48px);
+  transition: transform 0.3s ease;
 }
-.top-menu.is-scrolled .top-menu__brand img {
-  filter: none;
+.top-menu__brand:hover .almeida-logo {
+  transform: scale(1.03);
 }
 .top-menu__links {
   display: inline-flex;
@@ -64,15 +62,16 @@
   gap: clamp(18px, 2.6vw, 36px);
 }
 .top-menu__links a {
-  font-size: 14px;
+  font-family: var(--font-display);
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #fff0ee;
+  color: rgba(255, 255, 255, 0.82);
   transition: color 0.22s ease;
 }
 .top-menu__links a:hover {
-  color: var(--carmed-red);
+  color: var(--brand-bright);
 }
 
 @media (max-width: 900px) {
@@ -85,7 +84,7 @@
     justify-content: flex-end;
   }
   .top-menu__links a {
-    font-size: 12px;
-    letter-spacing: 0.11em;
+    font-size: 11px;
+    letter-spacing: 0.12em;
   }
 }
