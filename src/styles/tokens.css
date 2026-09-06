@@ -14,9 +14,16 @@
   );
 
   /* Tipografia — as variáveis vêm de next/font (ver app/layout.tsx).
-     Inter carrega o texto; Saira assina a marca e os rótulos técnicos. */
-  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
-  --font-display: var(--font-saira), "Saira", var(--font-sans);
+     Montserrat carrega texto, botões e descrições; Bruno Ace SC assina o
+     logo e os títulos principais. */
+  --font-sans: var(--font-montserrat), "Montserrat", system-ui, sans-serif;
+  --font-display: var(--font-bruno-ace-sc), "Bruno Ace SC", var(--font-sans);
+  /* Subtítulos — Montserrat SemiBold. */
+  --font-subtitle: var(--font-sans);
+  --weight-subtitle: 600;
+  /* Rótulos no estilo "CELULARES" do logo: Montserrat bem espaçado. */
+  --font-label: var(--font-sans);
+  --tracking-label: 0.28em;
 
   /* Marca */
   --brand: #1e7bff;

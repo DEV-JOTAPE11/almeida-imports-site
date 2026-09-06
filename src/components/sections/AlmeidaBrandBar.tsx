@@ -7,7 +7,7 @@ import { AlmeidaLogo } from "@/components/brand/AlmeidaLogo";
 export function AlmeidaBrandBar() {
   return (
     <div className="almeida-brand-bar">
-      <AlmeidaLogo size={52} className="almeida-brand-bar__logo" />
+      <AlmeidaLogo size={58} className="almeida-brand-bar__logo" />
       <p className="almeida-brand-bar__tag">
         Tecnologia que conecta você — <strong>Buritis</strong> e{" "}
         <strong>Arinos</strong>, no noroeste de Minas. iPhone, Xiaomi, JBL e

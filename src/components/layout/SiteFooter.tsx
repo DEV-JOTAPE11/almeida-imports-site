@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="site-footer" id="site-footer">
       <div className="footer-top">
         <div className="footer-brand">
-          <AlmeidaLogo size={44} className="footer-almeida-logo" />
+          <AlmeidaLogo size={50} className="footer-almeida-logo" />
           <p>
             Loja de eletrônicos em Buritis e Arinos (MG). iPhone, Xiaomi, JBL e
             Starlink com garantia, parcelamento no boleto em até 24x e

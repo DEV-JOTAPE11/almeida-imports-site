@@ -253,7 +253,7 @@ export function AlmeidaBrand() {
           </div>
           <div className="almeida-brand-shine" aria-hidden="true" />
           <div className="almeida-brand-logo-float" aria-hidden="true">
-            <AlmeidaLogo size={54} />
+            <AlmeidaLogo size={60} />
           </div>
           <div
             className="almeida-brand-product-wrap"

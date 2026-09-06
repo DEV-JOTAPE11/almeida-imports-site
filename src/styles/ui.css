@@ -11,7 +11,7 @@
   flex-shrink: 0;
 }
 .eyebrow-text {
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.28em;
@@ -123,12 +123,14 @@
   margin-top: 28px;
 }
 
+/* Títulos principais — Bruno Ace SC. A família só tem o peso 400 e é
+   larga por desenho: por isso o corpo menor e o tracking neutro. */
 .section-title {
-  font-family: var(--font-sans);
-  font-size: clamp(40px, 4.5vw, 68px);
-  font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display);
+  font-size: clamp(33px, 3.7vw, 56px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: 0;
   color: var(--ink);
 }
 .section-title .sr-word {
@@ -136,7 +138,10 @@
   will-change: opacity, filter;
 }
 
+/* Subtítulo de seção — Montserrat SemiBold. */
 .section-sub {
+  font-family: var(--font-subtitle);
+  font-weight: var(--weight-subtitle);
   font-size: 15px;
   line-height: 1.65;
   color: var(--ink-muted);
@@ -157,11 +162,11 @@
 .scroll-float-char {
   display: inline-block;
   will-change: opacity, transform;
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: clamp(36px, 4vw, 60px);
-  letter-spacing: -0.04em;
-  line-height: 1;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.3vw, 50px);
+  letter-spacing: 0;
+  line-height: 1.12;
   color: var(--ink);
 }
 .scroll-float-char.space {

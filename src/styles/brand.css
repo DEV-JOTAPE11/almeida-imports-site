@@ -1,52 +1,24 @@
 /* ════════════════════════════════════════════════════════
-   ASSINATURA — lockup "ALMEIDA / IMPORTS"
-   Texto, não bitmap: nítido em qualquer tamanho e acompanha o tema.
-   O `--logo-size` vem do componente e comanda as duas linhas.
+   ASSINATURA — logo oficial "ALMEIDA IMPORTES / CELULARES"
+   A arte é o PNG da loja; o `--logo-size` vem do componente e comanda a
+   altura, com a largura saindo da proporção do arquivo.
    ════════════════════════════════════════════════════════ */
 .almeida-logo {
   --logo-size: 46px;
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
-  gap: calc(var(--logo-size) * 0.06);
-  line-height: 1;
+  line-height: 0;
   user-select: none;
 }
 
-.almeida-logo__name {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: calc(var(--logo-size) * 0.62);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-/* A segunda linha é esticada para acompanhar a largura da primeira. */
-.almeida-logo__sub {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: calc(var(--logo-size) * 0.2);
-  letter-spacing: 0.52em;
-  /* Compensa o espaço que o `letter-spacing` deixa depois da última letra. */
-  text-indent: 0.52em;
-  text-transform: uppercase;
-  color: var(--brand);
-}
-
-/* Sobre a vitrine escura o lockup ganha o mesmo brilho do LED da loja. */
-.almeida-logo--brand .almeida-logo__name {
-  text-shadow: 0 0 26px rgba(120, 175, 255, 0.28);
-}
-.almeida-logo--brand .almeida-logo__sub {
-  text-shadow: 0 0 18px var(--brand-glow);
-}
-
-/* Variante de uma cor só, para quando o contexto já define a cor. */
-.almeida-logo--mono .almeida-logo__name,
-.almeida-logo--mono .almeida-logo__sub {
-  color: currentColor;
-  text-shadow: none;
+.almeida-logo__img {
+  display: block;
+  height: var(--logo-size);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  /* O mesmo brilho do LED da fachada, que o texto tinha antes. */
+  filter: drop-shadow(0 0 22px var(--brand-glow));
 }
 
 /* Rótulo só para leitor de tela. */

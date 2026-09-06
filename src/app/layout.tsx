@@ -1,22 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Saira } from "next/font/google";
+import { Bruno_Ace_SC, Montserrat } from "next/font/google";
 
 import "./globals.css";
 
-/* Texto e interface — a grotesca neutra das artes da loja. */
-const inter = Inter({
+/* Texto, botões e descrições — Montserrat, a família de todo o corpo do
+   site. O peso 600 (SemiBold) assina os subtítulos. */
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-montserrat",
 });
 
-/* Assinatura da marca e rótulos técnicos — desenho quadrado, como no logo. */
-const saira = Saira({
+/* Logo e títulos principais — Bruno Ace SC, o mesmo desenho quadrado e
+   tecnológico do letreiro da loja. Só existe no peso 400. */
+const brunoAceSC = Bruno_Ace_SC({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "800"],
+  weight: "400",
   display: "swap",
-  variable: "--font-saira",
+  variable: "--font-bruno-ace-sc",
 });
 
 export const metadata: Metadata = {
@@ -38,7 +40,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${saira.variable}`}>
+    <html
+      lang="pt-BR"
+      className={`${montserrat.variable} ${brunoAceSC.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

@@ -1,32 +1,47 @@
+import Image from "next/image";
+
+/** Arquivo original recortado no limite da arte (sem margem transparente). */
+const LOGO_SRC = "/assets/logo-almeida-lockup.png";
+const LOGO_WIDTH = 1200;
+const LOGO_HEIGHT = 420;
+
 /**
- * Assinatura da Almeida Imports.
+ * Assinatura da Almeida Imports — a arte oficial da loja.
  *
- * Reproduz o lockup que a loja usa nas artes: "ALMEIDA" pesado e o
- * "IMPORTS" fino, azul e bem espaçado logo abaixo, ocupando a mesma
- * largura. É texto (não bitmap) para ficar nítido em qualquer tamanho e
- * acompanhar as cores do tema.
+ * O lockup vem do PNG `logo-almeida.png` (recortado em
+ * `logo-almeida-lockup.png`), com "ALMEIDA IMPORTES" em azul e
+ * "CELULARES" bem espaçado embaixo.
  *
- * `tone="mono"` pinta tudo com a cor do contexto — usado sobre o hero,
- * onde o menu ainda é transparente.
+ * `size` continua sendo a altura total do lockup em px; a largura sai da
+ * proporção da arte, então a marca nunca distorce.
  */
 export function AlmeidaLogo({
   size = 46,
-  tone = "brand",
+  priority = false,
   className,
 }: {
   /** Altura total do lockup, em px. */
   size?: number;
-  tone?: "brand" | "mono";
+  /** `true` no logo do topo, que aparece no primeiro paint. */
+  priority?: boolean;
   className?: string;
 }) {
-  const classes = ["almeida-logo", `almeida-logo--${tone}`, className]
-    .filter(Boolean)
-    .join(" ");
+  const classes = ["almeida-logo", className].filter(Boolean).join(" ");
 
   return (
-    <span className={classes} style={{ "--logo-size": `${size}px` } as React.CSSProperties}>
-      <span className="almeida-logo__name">Almeida</span>
-      <span className="almeida-logo__sub">Imports</span>
+    <span
+      className={classes}
+      style={{ "--logo-size": `${size}px` } as React.CSSProperties}
+    >
+      <Image
+        className="almeida-logo__img"
+        src={LOGO_SRC}
+        alt="Almeida Importes Celulares"
+        width={LOGO_WIDTH}
+        height={LOGO_HEIGHT}
+        priority={priority}
+        sizes={`${Math.round(size * (LOGO_WIDTH / LOGO_HEIGHT))}px`}
+      />
     </span>
   );
 }

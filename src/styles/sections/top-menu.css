@@ -50,7 +50,7 @@
   position: relative;
 }
 .top-menu__brand .almeida-logo {
-  --logo-size: clamp(38px, 4.4vw, 48px);
+  --logo-size: clamp(43px, 5vw, 54px);
   transition: transform 0.3s ease;
 }
 .top-menu__brand:hover .almeida-logo {
@@ -62,7 +62,7 @@
   gap: clamp(18px, 2.6vw, 36px);
 }
 .top-menu__links a {
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.16em;

@@ -20,12 +20,6 @@
 
 .footer-brand .footer-almeida-logo {
   margin-bottom: 18px;
-  /* O lockup é centrado por dentro; aqui a coluna é alinhada à esquerda. */
-  align-items: flex-start;
-}
-.footer-brand .footer-almeida-logo .almeida-logo__sub {
-  align-self: stretch;
-  text-align: center;
 }
 .footer-brand p {
   font-size: 13px;
@@ -35,7 +29,7 @@
 }
 
 .footer-col-title {
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.22em;

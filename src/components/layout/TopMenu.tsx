@@ -50,7 +50,7 @@ export function TopMenu() {
           href="#section-showcase"
           aria-label="Ir para o topo"
         >
-          <AlmeidaLogo size={44} />
+          <AlmeidaLogo size={50} priority />
           <span className="sr-only">Almeida Imports</span>
         </a>
         <nav className="top-menu__links" aria-label="Seções da página">

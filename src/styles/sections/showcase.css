@@ -71,11 +71,11 @@
   padding: 0;
   width: 100%;
   text-align: center;
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: clamp(76px, 26vw, min(330px, 38vh));
-  letter-spacing: -0.045em;
-  line-height: 0.82;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(59px, 20vw, min(256px, 29.5vh));
+  letter-spacing: 0;
+  line-height: 0.9;
   color: var(--showcase-word);
   pointer-events: none;
   user-select: none;
@@ -97,10 +97,10 @@
 
 /* Palavras mais longas pedem um corpo menor para caber na linha. */
 .section-showcase[data-showcase-product="iphone-17-pro-max"] .showcase-bg-word {
-  font-size: clamp(58px, 21vw, min(272px, 34vh));
+  font-size: clamp(40px, 14.6vw, min(189px, 23.5vh));
 }
 .section-showcase[data-showcase-product="redmi-note-14-pro"] .showcase-bg-word {
-  font-size: clamp(62px, 22vw, min(288px, 35vh));
+  font-size: clamp(54px, 19vw, min(249px, 30vh));
 }
 
 /* ── Rodapé flutuante: legenda, CTA e dica ── */
@@ -130,14 +130,14 @@
   text-align: center;
 }
 .showcase-caption__label {
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: var(--font-subtitle);
+  font-weight: var(--weight-subtitle);
   font-size: clamp(17px, 2vw, 24px);
   letter-spacing: -0.02em;
   color: var(--white);
 }
 .showcase-caption__note {
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: clamp(10px, 1.1vw, 12px);
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -178,7 +178,7 @@
 
 .showcase-hint {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.24em;
@@ -313,13 +313,13 @@
     padding-bottom: 88px;
   }
   .section-showcase .showcase-bg-word {
-    font-size: clamp(62px, 42vw, 260px);
+    font-size: clamp(48px, 32.5vw, 200px);
   }
   .section-showcase[data-showcase-product="iphone-17-pro-max"] .showcase-bg-word {
-    font-size: clamp(44px, 30vw, 190px);
+    font-size: clamp(31px, 20.8vw, 132px);
   }
   .section-showcase[data-showcase-product="redmi-note-14-pro"] .showcase-bg-word {
-    font-size: clamp(50px, 34vw, 215px);
+    font-size: clamp(43px, 29.4vw, 186px);
   }
   .showcase-stage {
     min-height: 420px;

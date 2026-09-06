@@ -120,8 +120,8 @@
   width: 100%;
 }
 #sf-almeida-brand .scroll-float-char {
-  font-size: clamp(36px, 4.5vw, 65px);
-  line-height: 0.98;
+  font-size: clamp(30px, 3.7vw, 54px);
+  line-height: 1.1;
   color: var(--ink);
 }
 #sf-almeida-brand .scroll-float-char.space {
@@ -203,8 +203,8 @@
   stroke-linejoin: round;
 }
 .almeida-brand-pillar__title {
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: var(--font-subtitle);
+  font-weight: var(--weight-subtitle);
   font-size: 15px;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -326,11 +326,11 @@ html[data-showcase-brand-handoff="1"] #almeida-brand-product-img {
   top: 8%;
   right: 6%;
   z-index: 3;
-  width: clamp(120px, 22vw, 180px);
+  width: clamp(132px, 24vw, 190px);
   animation: almeida-logo-nudge 5s ease-in-out infinite;
 }
 .almeida-brand-logo-float .almeida-logo {
-  --logo-size: clamp(40px, 6vw, 56px);
+  --logo-size: clamp(45px, 6.8vw, 64px);
   filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5));
 }
 

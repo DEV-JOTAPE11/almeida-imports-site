@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.28em;
@@ -116,7 +116,7 @@
 }
 .stat-label strong {
   display: block;
-  font-family: var(--font-display);
+  font-family: var(--font-label);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
