@@ -1,0 +1,156 @@
+/* ════════════════════════════════════════════════════════
+   PRIMITIVOS DE UI — eyebrow, magnet, botões, títulos animados
+   ════════════════════════════════════════════════════════ */
+
+.eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--carmed-red);
+  flex-shrink: 0;
+}
+.eyebrow-text {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* Magnet wrapper — o inner é movido pelo GSAP conforme o mouse se aproxima */
+.magnet {
+  display: inline-block;
+  position: relative;
+}
+.magnet-inner {
+  will-change: transform;
+}
+
+.btn-primary {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  padding: 15px 28px;
+  border: none;
+  border-radius: 100px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  white-space: nowrap;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--carmed-red);
+  transform: translateX(-101%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: inherit;
+  z-index: 0;
+}
+.btn-primary span {
+  position: relative;
+  z-index: 1;
+}
+.btn-primary:hover {
+  transform: scale(0.97);
+  color: var(--white);
+}
+.btn-primary:hover::after {
+  transform: translateX(0);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  padding: 15px 0;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  color: var(--carmed-red);
+}
+
+/* ── Cabeçalho de seção ── */
+.section-header {
+  margin-bottom: 72px;
+  max-width: 600px;
+}
+.section-header.section-header--center {
+  max-width: none;
+  min-height: 34vh;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.section-header.section-header--center .section-eyebrow {
+  justify-content: center;
+}
+.section-header.section-header--center .section-sub {
+  max-width: 520px;
+  margin-top: 28px;
+}
+
+.section-title {
+  font-family: var(--font-sans);
+  font-size: clamp(40px, 4.5vw, 68px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.section-title .sr-word {
+  display: inline-block;
+  will-change: opacity, filter;
+}
+
+.section-sub {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 440px;
+}
+
+/* ScrollReveal (título por palavras) */
+.scroll-reveal-wrap {
+  margin: 0 0 24px;
+  transform-origin: 0% 50%;
+}
+
+/* ScrollFloat (título por caracteres) */
+.scroll-float-wrap {
+  overflow: hidden;
+  display: block;
+}
+.scroll-float-char {
+  display: inline-block;
+  will-change: opacity, transform;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(36px, 4vw, 60px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--ink);
+}
+.scroll-float-char.space {
+  width: 0.3em;
+}

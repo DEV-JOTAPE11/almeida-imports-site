@@ -1,0 +1,48 @@
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  background: var(--surface);
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+/* Âncoras não ficam sob o menu fixo */
+#section-carmed-fini,
+#section-carmed-brand,
+#section-team,
+#section-numbers,
+#site-footer {
+  scroll-margin-top: 118px;
+}
+
+/* ── GRAIN ── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9500;
+  opacity: 0.4;
+  background-size: 180px 180px;
+}

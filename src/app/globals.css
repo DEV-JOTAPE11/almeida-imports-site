@@ -1,0 +1,23 @@
+/* ════════════════════════════════════════════════════════
+   Carmed — folha de estilo raiz.
+   Base do design system primeiro, depois uma folha por seção.
+   ════════════════════════════════════════════════════════ */
+
+/* Base */
+@import "../styles/tokens.css";
+@import "../styles/reset.css";
+@import "../styles/scrollbar.css";
+@import "../styles/cursor.css";
+@import "../styles/ui.css";
+
+/* Seções, na ordem em que aparecem na página */
+@import "../styles/sections/top-menu.css";
+@import "../styles/sections/carmed-fini.css";
+@import "../styles/sections/brand-bar.css";
+@import "../styles/sections/carmed-brand.css";
+@import "../styles/sections/team.css";
+@import "../styles/sections/numbers.css";
+@import "../styles/sections/footer.css";
+
+/* Legado — sem correspondência no DOM atual (ver comentário no arquivo) */
+@import "../styles/sections/fini-hero-legacy.css";

@@ -1,0 +1,45 @@
+/* ── CURSOR customizado + faíscas de clique ── */
+* {
+  cursor: none !important;
+}
+
+#cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--carmed-red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition:
+    transform 0.1s ease,
+    width 0.25s ease,
+    height 0.25s ease,
+    opacity 0.25s ease;
+  mix-blend-mode: difference;
+}
+
+#cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(227, 24, 55, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition:
+    left 0.12s ease,
+    top 0.12s ease;
+}
+
+/* ── CLICK SPARK CANVAS ── */
+#spark-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9000;
+}

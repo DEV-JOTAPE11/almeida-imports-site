@@ -1,0 +1,31 @@
+/* ════════════════════════════════════════════════════════
+   FAIXA CARMED — logo + assinatura entre o hero e a seção da marca
+   ════════════════════════════════════════════════════════ */
+.carmed-brand-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px 40px;
+  padding: 32px max(24px, var(--layout-gutter)) 36px;
+  background: linear-gradient(135deg, #ffffff 0%, #fff5f4 50%, #ffe8e6 100%);
+  border-bottom: 1px solid rgba(227, 24, 55, 0.14);
+  box-shadow: 0 12px 40px rgba(227, 24, 55, 0.06);
+}
+.carmed-brand-bar__logo {
+  height: clamp(36px, 5vw, 48px);
+  width: auto;
+  object-fit: contain;
+}
+.carmed-brand-bar__tag {
+  font-size: clamp(13px, 1.5vw, 15px);
+  line-height: 1.55;
+  color: var(--ink-muted);
+  text-align: center;
+  max-width: 520px;
+  margin: 0;
+}
+.carmed-brand-bar__tag strong {
+  color: var(--carmed-red);
+  font-weight: 700;
+}

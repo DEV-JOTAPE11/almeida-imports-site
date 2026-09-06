@@ -1,0 +1,91 @@
+/* ════════════════════════════════════════════════════════
+   TOP MENU — transparente sobre o hero, vidro fosco ao rolar
+   ════════════════════════════════════════════════════════ */
+.top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 12000;
+  padding: 22px 0;
+  background: transparent;
+  /* Sem prefixo -webkit- manual: o Lightning CSS do Next gera os prefixos,
+     e declarar os dois aqui fazia ele descartar a propriedade padrão. */
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  transition:
+    background 0.4s ease,
+    backdrop-filter 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+.top-menu.is-scrolled {
+  background: rgba(255, 248, 247, 0.78);
+  backdrop-filter: blur(16px);
+  border-bottom-color: rgba(227, 24, 55, 0.14);
+  box-shadow: 0 10px 36px rgba(227, 24, 55, 0.07);
+}
+.top-menu.is-scrolled .top-menu__links a {
+  color: var(--carmed-red);
+}
+.top-menu.is-scrolled .top-menu__links a:hover {
+  color: var(--carmed-red-deep);
+}
+.top-menu__inner {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-left: var(--section-edge);
+  padding-right: var(--section-edge);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-sizing: border-box;
+}
+.top-menu__brand {
+  display: inline-flex;
+  align-items: center;
+}
+.top-menu__brand img {
+  height: clamp(42px, 5.5vw, 56px);
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: filter 0.4s ease;
+}
+.top-menu.is-scrolled .top-menu__brand img {
+  filter: none;
+}
+.top-menu__links {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(18px, 2.6vw, 36px);
+}
+.top-menu__links a {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #fff0ee;
+  transition: color 0.22s ease;
+}
+.top-menu__links a:hover {
+  color: var(--carmed-red);
+}
+
+@media (max-width: 900px) {
+  .top-menu {
+    padding: 16px 0;
+  }
+  .top-menu__links {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .top-menu__links a {
+    font-size: 12px;
+    letter-spacing: 0.11em;
+  }
+}

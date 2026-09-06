@@ -1,0 +1,45 @@
+/* ── SCROLLBAR (Firefox + WebKit) ── */
+html {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+html::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+html::-webkit-scrollbar-track {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 248, 247, 0.98) 0%,
+    var(--scrollbar-track) 50%,
+    rgba(255, 240, 238, 0.88) 100%
+  );
+  border-left: 1px solid rgba(227, 24, 55, 0.1);
+  border-radius: 999px;
+  margin-block: 6px;
+}
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--carmed-red) 0%,
+    var(--carmed-red-deep) 100%
+  );
+  border-radius: 999px;
+  border: 2px solid rgba(255, 248, 247, 0.95);
+  box-shadow:
+    0 2px 8px rgba(227, 24, 55, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f02045 0%, var(--carmed-red-deep) 100%);
+  box-shadow:
+    0 3px 14px rgba(227, 24, 55, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+html::-webkit-scrollbar-thumb:active {
+  background: var(--carmed-red-deep);
+}
+html::-webkit-scrollbar-corner {
+  background: var(--surface);
+}
