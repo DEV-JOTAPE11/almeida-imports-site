@@ -118,14 +118,9 @@
   margin-bottom: 28px;
   max-width: 100%;
   width: 100%;
-}
-#sf-almeida-brand .scroll-float-char {
   font-size: clamp(30px, 3.7vw, 54px);
   line-height: 1.1;
   color: var(--ink);
-}
-#sf-almeida-brand .scroll-float-char.space {
-  width: 0.28em;
 }
 
 .almeida-brand-lead {

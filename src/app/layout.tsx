@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Bruno_Ace_SC, Montserrat } from "next/font/google";
 
+import { SmoothScroll } from "@/components/effects/SmoothScroll";
+
 import "./globals.css";
 
 /* Texto, botões e descrições — Montserrat, a família de todo o corpo do
@@ -44,7 +46,12 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${montserrat.variable} ${brunoAceSC.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {/* Rolagem suave da página inteira — precisa montar antes das
+            animações com scrub para que o ticker seja o mesmo. */}
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

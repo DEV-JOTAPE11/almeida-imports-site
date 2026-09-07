@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-import { ScrollFloat } from "@/components/effects/ScrollFloat";
+import { BlurRevealText } from "@/components/effects/BlurRevealText";
 import { StatCounter } from "@/components/sections/StatCounter";
 import { STATS } from "@/data/stats";
 import { gsap } from "@/lib/gsap";
@@ -35,7 +35,7 @@ export function Numbers() {
   return (
     <section className="section-numbers" id="section-numbers">
       <div className="numbers-title-wrap">
-        <ScrollFloat id="sf-numbers" text="A loja em números." />
+        <BlurRevealText id="sf-numbers" text="A loja em números." />
       </div>
 
       <div className="numbers-grid" ref={gridRef}>

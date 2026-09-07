@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-import { ScrollFloat } from "@/components/effects/ScrollFloat";
+import { BlurRevealText } from "@/components/effects/BlurRevealText";
 import { CatalogCard } from "@/components/sections/CatalogCard";
 import { CATALOG } from "@/data/catalog";
 import { useMagicBento } from "@/hooks/useMagicBento";
@@ -40,7 +40,7 @@ export function Catalog() {
   return (
     <section className="section-catalog" id="section-catalog">
       <div className="section-header section-header--center">
-        <ScrollFloat id="sf-catalog" text="Catálogo da Almeida Imports." />
+        <BlurRevealText id="sf-catalog" text="Catálogo da Almeida Imports." />
 
         <p className="section-sub">
           As linhas que giram toda semana nas duas lojas. Chegou modelo novo, a

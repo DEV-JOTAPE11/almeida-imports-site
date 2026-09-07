@@ -185,6 +185,23 @@
   width: 0.3em;
 }
 
+/* BlurRevealText (título revelado caractere a caractere)
+   A tipografia mora no wrapper, e não em cada caractere: os <span> são
+   inline puros, sem caixa própria, para não interferir na quebra de
+   linha nem no kerning — só a opacidade e o desfoque mudam. */
+.blur-reveal-wrap {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 3.3vw, 50px);
+  letter-spacing: 0;
+  line-height: 1.12;
+  color: var(--ink);
+}
+.blur-reveal-char {
+  will-change: opacity, filter;
+}
+
 /* ════════════════════════════════════════════════════════
    CTA DE VIDRO (glassmorphism) — pílula escura com brilho girando
    Usado na vitrine para levar da vitrine direto ao WhatsApp.

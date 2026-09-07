@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { AlmeidaLogo } from "@/components/brand/AlmeidaLogo";
 import { Magnet } from "@/components/effects/Magnet";
-import { ScrollFloat } from "@/components/effects/ScrollFloat";
+import { BlurRevealText } from "@/components/effects/BlurRevealText";
 import { useShowcaseStage } from "@/components/providers/ShowcaseStageProvider";
 import { BRAND_PILLARS } from "@/data/brand-pillars";
 import { SHOWCASE_DEFAULT_PRODUCT_KEY, getShowcaseProductByKey } from "@/data/showcase-products";
@@ -199,7 +199,7 @@ export function AlmeidaBrand() {
 
       <div className="section-almeida-brand__inner">
         <div className="almeida-brand-copy">
-          <ScrollFloat id="sf-almeida-brand" text="Tecnologia que conecta você." />
+          <BlurRevealText id="sf-almeida-brand" text="Tecnologia que conecta você." />
 
           <p className="almeida-brand-lead almeida-brand-reveal-item">
             A Almeida Imports nasceu em <strong>Buritis</strong> e hoje atende

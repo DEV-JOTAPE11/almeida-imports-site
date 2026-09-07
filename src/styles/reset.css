@@ -28,6 +28,22 @@ ul {
   list-style: none;
 }
 
+/* ── ROLAGEM SUAVE (Lenis) ──
+   Enquanto o Lenis está ativo é ele quem interpola a posição a cada
+   quadro; deixar a suavização nativa ligada por baixo faria as duas
+   brigarem — cada quadro em que o Lenis escreve a posição viraria uma
+   animação nova do navegador, que a seguinte substitui, e toda rolagem
+   programática (âncoras do menu, ScrollTrigger) morreria. A classe
+   `.lenis` é posta no <html> pela própria biblioteca: sem ela
+   (reduced-motion, ou JS que não carregou) tudo volta ao nativo.
+   Ver components/effects/SmoothScroll.tsx. */
+html.lenis {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 /* Âncoras não ficam sob o menu fixo */
 #section-showcase,
 #section-almeida-brand,
