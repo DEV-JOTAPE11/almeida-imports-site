@@ -159,6 +159,18 @@
   overflow: hidden;
   display: block;
 }
+/* Cada palavra e um bloco inteiro: a quebra de linha so acontece entre
+   palavras e o `overflow` mascara as letras que ainda estao subindo, para
+   que a linha de cima nao apareca por cima da de baixo. O padding/margem
+   negativa devolve o espaco das descendentes (g, c) sem abrir vao. */
+.scroll-float-word {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.22em;
+  margin-bottom: -0.22em;
+}
 .scroll-float-char {
   display: inline-block;
   will-change: opacity, transform;

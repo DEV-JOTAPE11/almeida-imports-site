@@ -34,10 +34,6 @@ export function Numbers() {
 
   return (
     <section className="section-numbers" id="section-numbers">
-      <p className="numbers-eyebrow">
-        <span className="eyebrow-dot" /> Em números
-      </p>
-
       <div className="numbers-title-wrap">
         <ScrollFloat id="sf-numbers" text="A loja em números." />
       </div>

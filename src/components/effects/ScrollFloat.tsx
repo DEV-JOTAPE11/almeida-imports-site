@@ -18,6 +18,11 @@ interface ScrollFloatProps {
  * Título que "flutua" para cima letra a letra conforme a página rola.
  * Cada caractere entra esticado e vai assentando, com o progresso amarrado
  * ao scroll (scrub), não a uma duração fixa.
+ *
+ * Os caracteres são agrupados em palavras: como cada caractere é um
+ * `inline-block`, sem esse agrupamento o texto quebraria no meio da palavra
+ * ("Tecno / logia") e as letras da linha de cima invadiriam a de baixo
+ * durante a entrada. A palavra segura a quebra e mascara a própria animação.
  */
 export function ScrollFloat({ id, text, className, as = "div" }: ScrollFloatProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -49,7 +54,11 @@ export function ScrollFloat({ id, text, className, as = "div" }: ScrollFloatProp
           stagger: 0.03,
           scrollTrigger: {
             trigger: wrap,
-            start: "center bottom+=50%",
+            /* Comeca quando o titulo entra de fato na tela. Com o antigo
+               `center bottom+=50%` a faixa abria uma tela e meia antes: a
+               revelacao era gasta com o texto ainda fora da vista e chegava
+               pela metade na posicao de leitura. */
+            start: "top bottom-=15%",
             end: "bottom bottom-=40%",
             scrub: true,
           },
@@ -70,17 +79,23 @@ export function ScrollFloat({ id, text, className, as = "div" }: ScrollFloatProp
         className ? `${className} scroll-float-wrap` : "scroll-float-wrap"
       }
     >
-      {Array.from(text).map((ch, i) =>
-        ch === " " ? (
-          <span key={`${id}-${i}`} className="scroll-float-char space">
-            {" "}
-          </span>
-        ) : (
-          <span key={`${id}-${i}`} className="scroll-float-char">
-            {ch}
-          </span>
-        ),
-      )}
+      {text.split(" ").map((word, wordIndex, words) => (
+        <span key={`${id}-w${wordIndex}`} className="scroll-float-word">
+          {Array.from(word).map((ch, charIndex) => (
+            <span
+              key={`${id}-w${wordIndex}-${charIndex}`}
+              className="scroll-float-char"
+            >
+              {ch}
+            </span>
+          ))}
+          {/* O espaco vive dentro da palavra anterior para nao virar recuo
+              quando a linha quebra logo depois dele. */}
+          {wordIndex < words.length - 1 ? (
+            <span className="scroll-float-char space"> </span>
+          ) : null}
+        </span>
+      ))}
     </Tag>
   );
 }

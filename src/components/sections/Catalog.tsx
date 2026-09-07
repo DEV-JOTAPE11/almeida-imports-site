@@ -40,10 +40,6 @@ export function Catalog() {
   return (
     <section className="section-catalog" id="section-catalog">
       <div className="section-header section-header--center">
-        <p className="section-eyebrow">
-          <span className="eyebrow-dot" /> O que tem na loja
-        </p>
-
         <ScrollFloat id="sf-catalog" text="Catálogo da Almeida Imports." />
 
         <p className="section-sub">

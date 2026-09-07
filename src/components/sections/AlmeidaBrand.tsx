@@ -199,10 +199,6 @@ export function AlmeidaBrand() {
 
       <div className="section-almeida-brand__inner">
         <div className="almeida-brand-copy">
-          <p className="section-eyebrow">
-            <span className="eyebrow-dot" /> A loja
-          </p>
-
           <ScrollFloat id="sf-almeida-brand" text="Tecnologia que conecta você." />
 
           <p className="almeida-brand-lead almeida-brand-reveal-item">
