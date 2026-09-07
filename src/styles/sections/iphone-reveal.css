@@ -1,0 +1,190 @@
+/* ════════════════════════════════════════════════════════
+   SECTION — IPHONE 17 (card que escala até preencher a tela)
+   As constantes de ajuste (fundo, altura de rolagem, escala e raio
+   iniciais) chegam como custom properties inline, direto do componente
+   IphoneReveal.tsx — este arquivo só as consome.
+   ════════════════════════════════════════════════════════ */
+.section-iphone-reveal {
+  /* Fallbacks: valem se o componente não injetar nada. */
+  --reveal-bg-top: #0b1220;
+  --reveal-bg-bottom: #12203a;
+  --reveal-scroll: 300vh;
+  --reveal-card-scale: 0.4;
+  --reveal-card-scale-mobile: 0.6;
+  --reveal-card-radius: 30px;
+
+  position: relative;
+  height: var(--reveal-scroll);
+  background: linear-gradient(
+    180deg,
+    var(--reveal-bg-top) 0%,
+    var(--reveal-bg-bottom) 100%
+  );
+}
+
+/* Palco preso no topo enquanto a seção alta passa por baixo. */
+.iphone-reveal__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* O card é a tela inteira e nasce reduzido: assim, ao chegar em scale(1),
+   ele coincide exatamente com o viewport, sem recorte nem salto. */
+.iphone-reveal__card {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--reveal-bg-top);
+  transform-origin: 50% 50%;
+  transform: scale(var(--reveal-card-scale));
+  /* O raio é escalado junto com o card: divide para chegar ao valor real. */
+  border-radius: calc(var(--reveal-card-radius) / var(--reveal-card-scale));
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
+  will-change: transform, border-radius;
+}
+
+.iphone-reveal__card .iphone-reveal__photo {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Véu que segura o contraste do texto sobre a foto. */
+.iphone-reveal__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 8, 18, 0.78) 0%,
+    rgba(4, 8, 18, 0.5) 38%,
+    rgba(4, 8, 18, 0) 68%
+  );
+}
+
+/* ── Textos por cima ── */
+.iphone-reveal__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--layout-max);
+  padding: 0 var(--layout-gutter);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  /* Só o botão recebe clique; o resto deixa o card livre. */
+  pointer-events: none;
+}
+
+/* Estado inicial da cascata — o GSAP leva a autoAlpha 1 / y 0. */
+.iphone-reveal__item {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(26px);
+}
+
+.iphone-reveal__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+}
+.iphone-reveal__eyebrow .eyebrow-text {
+  color: var(--ink-muted);
+}
+
+.iphone-reveal__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 104px);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 0;
+  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.iphone-reveal__sub {
+  font-family: var(--font-subtitle);
+  font-weight: var(--weight-subtitle);
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.6;
+  color: var(--ink-muted);
+  max-width: 30ch;
+  margin: 22px 0 0;
+}
+
+.iphone-reveal__cta {
+  margin-top: 34px;
+  pointer-events: auto;
+}
+.iphone-reveal__cta .btn-primary:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+/* ── Mobile: card maior, foto reenquadrada no aparelho, texto embaixo ── */
+/* A consulta espelha MOBILE_QUERY em IphoneReveal.tsx. */
+@media (max-width: 767px) {
+  .iphone-reveal__card {
+    transform: scale(var(--reveal-card-scale-mobile));
+    border-radius: calc(
+      var(--reveal-card-radius) / var(--reveal-card-scale-mobile)
+    );
+  }
+  /* Em tela estreita o `cover` corta as laterais: puxa o enquadramento
+     para a direita, onde o aparelho está. */
+  .iphone-reveal__card .iphone-reveal__photo {
+    object-position: 68% 50%;
+  }
+  .iphone-reveal__scrim {
+    background: linear-gradient(
+      0deg,
+      rgba(4, 8, 18, 0.86) 0%,
+      rgba(4, 8, 18, 0.55) 38%,
+      rgba(4, 8, 18, 0) 72%
+    );
+  }
+  .iphone-reveal__content {
+    padding: 0 24px;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 12vh;
+  }
+  .iphone-reveal__eyebrow {
+    justify-content: center;
+  }
+  .iphone-reveal__sub {
+    max-width: 24ch;
+  }
+}
+
+/* ── Sem movimento: card já preenchido, textos visíveis, sem rolagem extra ── */
+@media (prefers-reduced-motion: reduce) {
+  .section-iphone-reveal {
+    height: auto;
+  }
+  .iphone-reveal__stage {
+    position: relative;
+    min-height: 100svh;
+  }
+  .iphone-reveal__card {
+    transform: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .iphone-reveal__item {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}

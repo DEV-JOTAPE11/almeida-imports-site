@@ -9,6 +9,7 @@ import { AlmeidaBrandBar } from "@/components/sections/AlmeidaBrandBar";
 import { ShowcaseHero } from "@/components/sections/ShowcaseHero";
 import { Numbers } from "@/components/sections/Numbers";
 import { Catalog } from "@/components/sections/Catalog";
+import { IphoneReveal } from "@/components/sections/IphoneReveal";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <AlmeidaBrandBar />
       <AlmeidaBrand />
       <Catalog />
+      <IphoneReveal />
       <Numbers />
 
       <SiteFooter />
