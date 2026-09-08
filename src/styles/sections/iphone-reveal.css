@@ -1,8 +1,9 @@
 /* ════════════════════════════════════════════════════════
    SECTION — IPHONE 17 (card que escala até preencher a tela)
    As constantes de ajuste (fundo, altura de rolagem, escala e raio
-   iniciais) chegam como custom properties inline, direto do componente
-   IphoneReveal.tsx — este arquivo só as consome.
+   iniciais, subida do bloco de oferta, névoa) chegam como custom
+   properties inline, direto do componente IphoneReveal.tsx — este
+   arquivo só as consome.
    ════════════════════════════════════════════════════════ */
 .section-iphone-reveal {
   /* Fallbacks: valem se o componente não injetar nada. */
@@ -12,6 +13,9 @@
   --reveal-card-scale: 0.4;
   --reveal-card-scale-mobile: 0.6;
   --reveal-card-radius: 30px;
+  --reveal-offer-rise: 90px;
+  --reveal-smoke-height: 46vh;
+  --reveal-smoke-opacity: 0.95;
 
   position: relative;
   height: var(--reveal-scroll);
@@ -39,6 +43,7 @@
 .iphone-reveal__card {
   position: absolute;
   inset: 0;
+  z-index: 0;
   overflow: hidden;
   background: var(--reveal-bg-top);
   transform-origin: 50% 50%;
@@ -67,6 +72,53 @@
   );
 }
 
+/* ── Névoa do rodapé ──
+   Duas camadas: um degradê do próprio Deep Blue subindo do chão, que é o
+   que funde a cena com o fundo da seção, e uma nuvem de ruído borrado
+   (feTurbulence) à deriva por cima, que dá a textura de fumaça. */
+.iphone-reveal__smoke {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--reveal-smoke-height);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  background: linear-gradient(
+    to top,
+    var(--reveal-bg-bottom) 0%,
+    color-mix(in srgb, var(--reveal-bg-bottom) 88%, transparent) 26%,
+    color-mix(in srgb, var(--reveal-bg-top) 55%, transparent) 58%,
+    transparent 100%
+  );
+}
+
+.iphone-reveal__smoke-noise {
+  position: absolute;
+  bottom: -8%;
+  left: -25%;
+  width: 150%;
+  height: 116%;
+  opacity: 0.42;
+  mix-blend-mode: soft-light;
+  /* A textura só aparece perto do chão e some antes do topo da faixa. */
+  -webkit-mask-image: linear-gradient(to top, #000 8%, transparent 82%);
+  mask-image: linear-gradient(to top, #000 8%, transparent 82%);
+  animation: iphone-reveal-smoke-drift 42s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes iphone-reveal-smoke-drift {
+  from {
+    transform: translate3d(-5%, 0, 0) scale(1.05);
+  }
+  to {
+    transform: translate3d(5%, -4%, 0) scale(1.14);
+  }
+}
+
 /* ── Textos por cima ── */
 .iphone-reveal__content {
   position: relative;
@@ -79,15 +131,24 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  /* Só o botão recebe clique; o resto deixa o card livre. */
+  /* Só os botões recebem clique; o resto deixa o card livre. */
   pointer-events: none;
 }
 
-/* Estado inicial da cascata — o GSAP leva a autoAlpha 1 / y 0. */
-.iphone-reveal__item {
+/* Estado inicial da sequência — o GSAP leva a autoAlpha 1 / y 0. */
+.iphone-reveal__eyebrow,
+.iphone-reveal__sub,
+.iphone-reveal__offer {
   opacity: 0;
   visibility: hidden;
   transform: translateY(26px);
+}
+.iphone-reveal__title {
+  opacity: 0;
+  visibility: hidden;
+}
+.iphone-reveal__offer {
+  transform: translateY(var(--reveal-offer-rise));
 }
 
 .iphone-reveal__eyebrow {
@@ -105,6 +166,8 @@
   font-weight: 400;
   font-size: clamp(44px, 7vw, 104px);
   line-height: 1;
+  /* Segura a altura da linha enquanto o título ainda está sendo digitado. */
+  min-height: 1em;
   letter-spacing: 0;
   color: var(--ink);
   margin: 0;
@@ -121,13 +184,99 @@
   margin: 22px 0 0;
 }
 
-.iphone-reveal__cta {
+/* Cursor da máquina de escrever: some sozinho quando a digitação acaba,
+   porque o GSAP tira a classe no fim do tween. */
+.iphone-reveal__title.is-typing::after,
+.iphone-reveal__price.is-typing::after {
+  content: "|";
+  margin-left: 0.06em;
+  color: var(--brand-bright);
+  animation: iphone-reveal-caret 0.9s steps(1, end) infinite;
+}
+
+@keyframes iphone-reveal-caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ── Bloco de oferta: preço + botões, subindo do rodapé ── */
+.iphone-reveal__offer {
   margin-top: 34px;
+}
+
+.iphone-reveal__price-line {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  /* O corpo da linha é o corpo do preço: o rótulo é quem abre exceção. */
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.05;
+  min-height: 1.05em;
+  margin: 0 0 24px;
+}
+.iphone-reveal__price-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.iphone-reveal__price {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  text-shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+}
+
+.iphone-reveal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
   pointer-events: auto;
 }
-.iphone-reveal__cta .btn-primary:focus-visible {
+.iphone-reveal__actions .btn-primary:focus-visible,
+.iphone-reveal__btn-outline:focus-visible {
   outline: 2px solid var(--white);
   outline-offset: 3px;
+}
+
+/* Botão secundário: a mesma pílula do primário, em vidro escuro. */
+.iphone-reveal__btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 26px;
+  border-radius: 100px;
+  border: 1px solid rgba(222, 233, 255, 0.28);
+  background: rgba(8, 14, 26, 0.42);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  white-space: nowrap;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+.iphone-reveal__btn-outline:hover {
+  border-color: var(--brand-bright);
+  background: rgba(30, 123, 255, 0.16);
+  color: var(--brand-bright);
+  transform: scale(0.98);
 }
 
 /* ── Mobile: card maior, foto reenquadrada no aparelho, texto embaixo ── */
@@ -153,22 +302,45 @@
     );
   }
   .iphone-reveal__content {
-    padding: 0 24px;
+    padding: 0 24px 8vh;
     height: 100%;
     justify-content: flex-end;
     align-items: center;
     text-align: center;
-    padding-bottom: 12vh;
   }
   .iphone-reveal__eyebrow {
     justify-content: center;
+    margin-bottom: 16px;
+  }
+  .iphone-reveal__title {
+    font-size: clamp(38px, 13vw, 60px);
   }
   .iphone-reveal__sub {
-    max-width: 24ch;
+    max-width: 26ch;
+    margin-top: 16px;
+  }
+  .iphone-reveal__offer {
+    margin-top: 26px;
+    width: 100%;
+  }
+  .iphone-reveal__price-line {
+    justify-content: center;
+    font-size: clamp(28px, 9vw, 40px);
+    margin-bottom: 20px;
+  }
+  /* Botões empilhados e largos, para caber o polegar. */
+  .iphone-reveal__actions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  .iphone-reveal__actions .btn-primary,
+  .iphone-reveal__btn-outline {
+    width: 100%;
   }
 }
 
-/* ── Sem movimento: card já preenchido, textos visíveis, sem rolagem extra ── */
+/* ── Sem movimento: cena montada, névoa parada, sem rolagem extra ── */
 @media (prefers-reduced-motion: reduce) {
   .section-iphone-reveal {
     height: auto;
@@ -182,9 +354,23 @@
     border-radius: 0;
     box-shadow: none;
   }
-  .iphone-reveal__item {
+  .iphone-reveal__eyebrow,
+  .iphone-reveal__title,
+  .iphone-reveal__sub,
+  .iphone-reveal__offer {
     opacity: 1;
     visibility: visible;
     transform: none;
+  }
+  .iphone-reveal__smoke {
+    opacity: var(--reveal-smoke-opacity);
+    visibility: visible;
+  }
+  .iphone-reveal__smoke-noise {
+    animation: none;
+  }
+  .iphone-reveal__title.is-typing::after,
+  .iphone-reveal__price.is-typing::after {
+    content: none;
   }
 }
