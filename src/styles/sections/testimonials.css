@@ -4,31 +4,11 @@
    que está sob o mouse, então o olho tem um alvo de cada vez.
    ════════════════════════════════════════════════════════ */
 .section-testimonials {
+  /* Sem fundo nem filete: quem pinta o trecho inteiro é `.page-outro`.
+     O `relative` fica porque o traço do canto se ancora nele. */
   position: relative;
-  isolation: isolate;
   overflow: hidden;
   padding: 120px 0 128px;
-  border-top: 1px solid var(--hairline);
-  background: var(--surface);
-}
-
-/* Halo azul no alto, o mesmo da fachada. */
-.section-testimonials::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 55% 45% at 50% 0%,
-    rgba(30, 123, 255, 0.16) 0%,
-    rgba(11, 71, 196, 0.05) 45%,
-    transparent 72%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-.section-testimonials > * {
-  position: relative;
-  z-index: 1;
 }
 
 /* Traço largo saindo pelo canto inferior direito. */
@@ -100,27 +80,29 @@
 
 /* ── Esteira ── */
 .testimonials-marquee {
+  --edge-fade: clamp(56px, 11vw, 180px);
+
   position: relative;
   opacity: 0;
   transform: translateY(40px);
-}
-
-/* Os dois véus que dissolvem os cards nas bordas da tela. */
-.testimonials-fade {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: clamp(70px, 12vw, 190px);
-  z-index: 2;
-  pointer-events: none;
-}
-.testimonials-fade--start {
-  left: 0;
-  background: linear-gradient(90deg, var(--surface), transparent);
-}
-.testimonials-fade--end {
-  right: 0;
-  background: linear-gradient(270deg, var(--surface), transparent);
+  /* Os cards se dissolvem nas bordas por MÁSCARA, e não por dois retângulos
+     da cor do fundo: como o fundo do trecho é um degradê com poças de luz,
+     um retângulo chapado apareceria como uma barra mais escura. A máscara
+     apaga o próprio card, então o que estiver atrás continua passando. */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 var(--edge-fade),
+    #000 calc(100% - var(--edge-fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 var(--edge-fade),
+    #000 calc(100% - var(--edge-fade)),
+    transparent 100%
+  );
 }
 
 /* ── Card de cliente ── */

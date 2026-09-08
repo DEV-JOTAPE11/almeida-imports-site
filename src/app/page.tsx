@@ -27,10 +27,12 @@ export default function HomePage() {
       <FeaturedPhones />
       <Catalog />
       <IphoneReveal />
-      <Numbers />
-      <Testimonials />
-
-      <SiteFooter />
+      {/* Números, depoimentos e rodapé dividem um fundo só — ver page-outro.css. */}
+      <div className="page-outro">
+        <Numbers />
+        <Testimonials />
+        <SiteFooter />
+      </div>
 
       {/* Animações que ligam a vitrine Showcase à seção da marca. */}
       <ShowcaseStageController />

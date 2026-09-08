@@ -122,9 +122,6 @@ export function Testimonials() {
       </div>
 
       <div className="testimonials-marquee" ref={marqueeRef}>
-        <div className="testimonials-fade testimonials-fade--start" />
-        <div className="testimonials-fade testimonials-fade--end" />
-
         <Marquee duration="52s" gap="22px">
           {TESTIMONIALS.map((client) => (
             <figure className="testimonial-card" key={client.id}>

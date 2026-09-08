@@ -12,43 +12,8 @@
   padding-bottom: 28px;
   padding-left: var(--section-edge);
   padding-right: var(--section-edge);
-  position: relative;
-  isolation: isolate;
+  /* Sem fundo nem filete: quem pinta o trecho inteiro é `.page-outro`. */
   overflow: hidden;
-  border-top: 1px solid var(--hairline);
-  background: var(--surface-alt);
-}
-
-/* Malha técnica ao fundo — o mesmo desenho de grade das artes da loja. */
-.section-numbers::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(108, 178, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(108, 178, 255, 0.07) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 70% 80% at 50% 40%, #000 20%, transparent 75%);
-  z-index: 0;
-  pointer-events: none;
-}
-/* Halo azul, a luz da fachada. */
-.section-numbers::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 60% 70% at 78% 12%,
-    rgba(30, 123, 255, 0.2) 0%,
-    rgba(11, 71, 196, 0.07) 42%,
-    transparent 72%
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-.section-numbers > * {
-  position: relative;
-  z-index: 2;
 }
 
 .numbers-eyebrow {

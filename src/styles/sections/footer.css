@@ -6,8 +6,7 @@
   padding-bottom: 40px;
   padding-left: var(--section-edge);
   padding-right: var(--section-edge);
-  background: linear-gradient(180deg, var(--surface-alt) 0%, #03050b 100%);
-  border-top: 1px solid var(--hairline);
+  /* Sem fundo nem filete: quem pinta o trecho inteiro é `.page-outro`. */
 }
 
 .footer-top {

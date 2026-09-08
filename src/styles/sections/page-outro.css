@@ -1,0 +1,56 @@
+/* ════════════════════════════════════════════════════════
+   DESFECHO DA PÁGINA — números + depoimentos + rodapé
+   As três últimas seções não têm fundo próprio: o fundo é UM só, pintado
+   aqui no bloco que envolve as três. É o que faz o trecho final ler como um
+   ambiente contínuo em vez de três faixas empilhadas — a luz atravessa as
+   fronteiras entre as seções porque, do ponto de vista da pintura, elas não
+   existem.
+   ════════════════════════════════════════════════════════ */
+.page-outro {
+  position: relative;
+  isolation: isolate;
+  /* A seção do iPhone termina em `--surface`: a descida começa daí, respira
+     um tom acima na altura dos números e fecha no quase-preto do rodapé. */
+  background: linear-gradient(
+    180deg,
+    var(--surface) 0%,
+    var(--surface-alt) 24%,
+    var(--surface) 62%,
+    #03050b 100%
+  );
+  border-top: 1px solid var(--hairline);
+}
+
+/* A luz da fachada, em três poças alternando de lado conforme a página desce.
+   As porcentagens são do BLOCO inteiro, não de cada seção: por isso a poça do
+   meio cai em cima da esteira de fotos e a de baixo lambe o topo do rodapé,
+   costurando um trecho no outro. */
+.page-outro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 64% 15% at 50% 3%,
+      rgba(30, 123, 255, 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 54% 19% at 80% 38%,
+      rgba(30, 123, 255, 0.1) 0%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 60% 18% at 20% 72%,
+      rgba(11, 71, 196, 0.12) 0%,
+      transparent 74%
+    );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* O conteúdo das três seções sobe para cima da luz. */
+.page-outro > * {
+  position: relative;
+  z-index: 1;
+}
