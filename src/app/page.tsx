@@ -9,6 +9,7 @@ import { AlmeidaBrandBar } from "@/components/sections/AlmeidaBrandBar";
 import { ShowcaseHero } from "@/components/sections/ShowcaseHero";
 import { FeaturedPhones } from "@/components/sections/FeaturedPhones";
 import { Numbers } from "@/components/sections/Numbers";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { Catalog } from "@/components/sections/Catalog";
 import { IphoneReveal } from "@/components/sections/IphoneReveal";
 
@@ -27,6 +28,7 @@ export default function HomePage() {
       <Catalog />
       <IphoneReveal />
       <Numbers />
+      <Testimonials />
 
       <SiteFooter />
 

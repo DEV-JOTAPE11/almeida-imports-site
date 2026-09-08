@@ -134,3 +134,15 @@ export interface FeaturedPhone {
   /** Loja que atende o aparelho — define o WhatsApp do CTA. */
   store: "buritis" | "arinos";
 }
+
+/** Card de cliente na esteira de depoimentos. */
+export interface Testimonial {
+  id: string;
+  /** Foto do cliente na loja (recorte 3:4). */
+  photo: string;
+  alt: string;
+  /** O que o cliente levou — vira o título do card. */
+  purchase: string;
+  /** Linha de apoio: loja / cidade. */
+  place: string;
+}
