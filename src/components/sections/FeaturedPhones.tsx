@@ -144,12 +144,7 @@ export function FeaturedPhones() {
       <div className="featured-halo" aria-hidden="true" />
 
       <div className="featured-head">
-        <div className="section-eyebrow featured-eyebrow">
-          <span className="eyebrow-dot" />
-          <span className="eyebrow-text">Estoque da semana</span>
-        </div>
-
-        <BlurRevealText id="sf-featured" text="Destaques da semana." />
+        <BlurRevealText id="sf-featured" text="Catálogo da Almeida Imports." />
 
         <p className="featured-sub">
           Selecionamos os melhores aparelhos com preços especiais para você —

@@ -40,7 +40,7 @@ export function Catalog() {
   return (
     <section className="section-catalog" id="section-catalog">
       <div className="section-header section-header--center">
-        <BlurRevealText id="sf-catalog" text="Catálogo da Almeida Imports." />
+        <BlurRevealText id="sf-catalog" text="Destaques da semana." />
 
         <p className="section-sub">
           As linhas que giram toda semana nas duas lojas. Chegou modelo novo, a
