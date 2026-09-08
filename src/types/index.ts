@@ -84,3 +84,53 @@ export interface BrandPillar {
   /** Caminhos SVG do ícone (renderizados dentro de um viewBox 0 0 24 24). */
   icon: React.ReactNode;
 }
+
+/** Ícones disponíveis na linha de especificações do card de destaque. */
+export type PhoneSpecIcon =
+  | "storage"
+  | "screen"
+  | "camera"
+  | "battery"
+  | "seal"
+  | "chip";
+
+/** Uma especificação curta exibida no card de destaque. */
+export interface PhoneSpec {
+  icon: PhoneSpecIcon;
+  label: string;
+}
+
+/**
+ * Aparelho da vitrine "Destaques da semana".
+ * Os campos `brand`, `model`, `storage`, `condition` e `price` também
+ * alimentam a busca da seção (Marca / Modelo / Armazenamento + avançados).
+ */
+export interface FeaturedPhone {
+  id: string;
+  /** Marca comercial — opção do filtro "Marca". */
+  brand: string;
+  /** Nome do aparelho — opção do filtro "Modelo". */
+  model: string;
+  /** Cor de fábrica, exibida sob o nome. */
+  color: string;
+  /** Armazenamento — opção do filtro "Armazenamento". */
+  storage: string;
+  /** Estado do aparelho — filtro avançado "Condição". */
+  condition: "Lacrado" | "Seminovo";
+  /** Selo sobre a foto ("Novidade", "Mais vendido"...). */
+  badge?: string;
+  photo: string;
+  alt: string;
+  /**
+   * Correção de escala da foto. Cada fabricante entrega o render com uma
+   * margem interna diferente; sem isso um aparelho apareceria menor que o
+   * vizinho só por causa do arquivo. `1` = sem correção.
+   */
+  photoScale?: number;
+  /** Três specs curtas, no formato da ficha do card. */
+  specs: [PhoneSpec, PhoneSpec, PhoneSpec];
+  /** Preço à vista, em reais. */
+  price: number;
+  /** Loja que atende o aparelho — define o WhatsApp do CTA. */
+  store: "buritis" | "arinos";
+}

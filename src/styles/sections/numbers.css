@@ -2,8 +2,14 @@
    SECTION — NÚMEROS
    ════════════════════════════════════════════════════════ */
 .section-numbers {
-  padding-top: 120px;
-  padding-bottom: 130px;
+  /* Altura do header: logo + 22px de padding em cima e embaixo — aqui, 3x isso. */
+  --header-h: calc(clamp(43px, 5vw, 54px) + 44px);
+  height: calc(var(--header-h) * 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 28px;
+  padding-bottom: 28px;
   padding-left: var(--section-edge);
   padding-right: var(--section-edge);
   position: relative;
@@ -21,7 +27,7 @@
   background-image:
     linear-gradient(rgba(108, 178, 255, 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(108, 178, 255, 0.07) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background-size: 44px 44px;
   mask-image: radial-gradient(ellipse 70% 80% at 50% 40%, #000 20%, transparent 75%);
   z-index: 0;
   pointer-events: none;
@@ -59,7 +65,10 @@
 }
 
 .numbers-title-wrap {
-  margin-bottom: 80px;
+  margin-bottom: 26px;
+}
+.numbers-title-wrap .blur-reveal-wrap {
+  font-size: clamp(20px, 2vw, 30px);
 }
 
 .numbers-grid {
@@ -69,7 +78,7 @@
 }
 
 .stat-item {
-  padding: 0 48px 0 0;
+  padding: 0 28px 0 0;
   border-right: 1px solid var(--hairline);
   opacity: 0;
   transform: translateY(40px);
@@ -80,17 +89,17 @@
 .stat-item:last-child {
   border-right: none;
   padding-right: 0;
-  padding-left: 48px;
+  padding-left: 28px;
 }
 .stat-item:nth-child(2),
 .stat-item:nth-child(3) {
-  padding-left: 48px;
+  padding-left: 28px;
 }
 
 .stat-number {
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(56px, 7vw, 110px);
+  font-size: clamp(30px, 3.4vw, 52px);
   letter-spacing: -0.05em;
   line-height: 1;
   color: var(--ink);
@@ -108,36 +117,43 @@
 }
 
 .stat-label {
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 11px;
+  line-height: 1.45;
   color: var(--ink-muted);
-  margin-top: 16px;
-  max-width: 190px;
+  margin-top: 10px;
+  max-width: 165px;
 }
 .stat-label strong {
   display: block;
   font-family: var(--font-label);
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 9px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--brand-bright);
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 /* Destaque no primeiro número */
 .stat-item:first-child .stat-number {
   color: var(--brand-bright);
-  text-shadow: 0 0 40px var(--brand-glow);
+  text-shadow: 0 0 24px var(--brand-glow);
 }
 .stat-item:first-child .stat-number .stat-suffix {
   color: var(--ink);
 }
 
 @media (max-width: 900px) {
+  /* Empilhado, a altura fixa cortaria o conteúdo — vira piso mínimo. */
+  .section-numbers {
+    height: auto;
+    min-height: calc(var(--header-h) * 3);
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
   .numbers-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px 0;
+    gap: 28px 0;
   }
   .stat-item:nth-child(2n) {
     border-right: none;
@@ -147,7 +163,7 @@
     padding-left: 0;
   }
   .stat-item:last-child {
-    padding-left: 48px;
+    padding-left: 28px;
   }
 }
 
@@ -158,7 +174,7 @@
   .stat-item,
   .stat-item:last-child {
     border-right: none;
-    padding: 0 0 32px;
+    padding: 0 0 24px;
   }
   .stat-label {
     max-width: none;
